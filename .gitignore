@@ -1,0 +1,10 @@
+#.idea
+/client/.idea
+/server/.idea
+
+# node modules
+/server/node_modules
+
+# config/keys MongoURI
+/server/config
+
