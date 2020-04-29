@@ -12,7 +12,8 @@ app.use(express.json());
 app.use(cors());
 
 //DB Config   //If cloning from git, include mongoURI in './config/keys'
-const uri = require('./config/keys').mongoURI;
+const uri = require('./config/keys').MONGO_URI;
+//Use process.env.MONGO_URI instead of uri if using .env file
 
 //Connect to MongoDB
 mongoose
