@@ -54,7 +54,12 @@ const productSchema = new Schema({
     },
     productImgUrl: {
         type : String,
-        required : true,
+        default: ""
+    },
+    productRemarks: {
+        type : String,
+        default: "",
+        maxlength: 50
     }
 });
 
