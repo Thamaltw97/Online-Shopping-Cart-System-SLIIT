@@ -21,6 +21,14 @@ mongoose
     .then(() => console.log("MongoDB database connection established successfully"))
     .catch(err => console.log("ERROR: " + err));
 
+
+//Import routers from routes directory
+const productsRouter = require('./routes/ProductRoutes');
+
+//Use routers
+app.use('/products', productsRouter);
+
+
 // Start server
 app.listen(port, () => {
     console.log("Server is running on port: " + port);
