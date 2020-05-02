@@ -1,4 +1,6 @@
 import React, {useState} from "react";
+import ImgUpload from './ImageUpload';
+import './StylesProduct.css';
 
 const Categories = [
     { key: 1, value: "Shirts" },
@@ -24,6 +26,8 @@ function UploadProductPage() {
     const [ColourValue, setColourValue] = useState("");
     const [QtyValue, setQtyValue] = useState();
     const [UPriceValue, setUPriceValue] = useState();
+    const [RemarksValue, setRemarksValue] = useState("");
+    const [Images, setImages] = useState([]);
 
     const onNameChange = (e) => {
         setNameValue(e.currentTarget.value);
@@ -49,26 +53,45 @@ function UploadProductPage() {
         setUPriceValue(e.currentTarget.value);
     };
 
+    const onRemarksChange = (e) => {
+        setRemarksValue(e.currentTarget.value);
+    };
+
+    const updateImages = (newImages) => {
+        //console.log(newImages);
+        setImages(newImages);
+    };
+
+
     //render() {
     return (
-        <div className="container pt-3 mt-5 mb-5" >
+        <div className="container pt-3 mt-3 mb-5" >
             <div className="card card-body my-0 bg-light">
-                <form onSubmit>
-
-                    {/*DropZone*/}
+                <form >
 
                     <div className="row">
                         <div className="col-md-2"></div>
                         <div className="col-md-8">
-                            <h3 className="text-capitalize text-center">Add New Product</h3>
+                            <h2 className="text-capitalize text-center mt-3 mb-2">Add New Product</h2>
                             <br/>
+                            <br />
+
+                            {/*DropZone*/}
+                            <ImgUpload refreshFunction={updateImages} placeholder={Images}/>
+                            <br />
+                            <br />
+
                             <label>Product Name : </label>
-                            <input id="productName" type="text" className="form-control text-capitalize" maxLength="30" placeholder="Enter Product Name"
+                            <input id="productName" type="text" className="form-control text-capitalize"
+                                   maxLength="30"
+                                   placeholder="Enter Product Name"
                                    onChange={onNameChange}
                                    value={NameValue} />
                             <br/>
                             <label>Product Description : </label>
-                            <input id="productDesc" type="text" className="form-control text-capitalize" maxLength="100" placeholder="Enter Product Description"
+                            <input id="productDesc" type="text" className="form-control text-capitalize"
+                                   maxLength="100"
+                                   placeholder="Enter Product Description"
                                    onChange={onDescChange}
                                    value={DescValue} />
                             <br />
@@ -85,9 +108,6 @@ function UploadProductPage() {
                                 </div>
                                 <div className="col-md-6">
                                     <label>Product Size : </label>
-                                    {/*<input id="productSize" type="text" className="form-control text-capitalize" maxLength="20" placeholder="Enter Product Size"*/}
-                                    {/*       onChange={onSizeChange}*/}
-                                    {/*       value={SizeValue} />*/}
                                     <select className="form-control">
                                         {Sizes.map(item => (
                                             <option key={item.key} value={item.key}>
@@ -99,29 +119,44 @@ function UploadProductPage() {
                             </div>
                             <br/>
                             <label>Product Brand : </label>
-                            <input id="productBrand" type="text" className="form-control text-capitalize" maxLength="30" placeholder="Enter Product Brand"
+                            <input id="productBrand" type="text" className="form-control text-capitalize"
+                                   maxLength="30"
+                                   placeholder="Enter Product Brand"
                                    onChange={onBrandChange}
                                    value={BrandValue} />
                             <br />
                             <label>Product Colour : </label>
-                            <input id="productColour" type="text" className="form-control text-capitalize" maxLength="30" placeholder="Enter Product Colour"
+                            <input id="productColour" type="text" className="form-control text-capitalize"
+                                   maxLength="30"
+                                   placeholder="Enter Product Colour"
                                    onChange={onColourChange}
                                    value={ColourValue} />
                             <br />
                             <div className="row">
                                 <div className="col-md-6">
                                     <label>Product Quantity : </label>
-                                    <input id="productSize" type="text" className="form-control text-capitalize" maxLength="12" placeholder="Enter Product Quantity"
+                                    <input id="productQuantity" type="number" className="form-control text-capitalize"
+                                           maxLength="12" min="1"
+                                           placeholder="Enter Product Quantity"
                                            onChange={onQtyChange}
                                            value={QtyValue} />
                                 </div>
                                 <div className="col-md-6">
                                     <label>Product Unit Price : </label>
-                                    <input id="productSize" type="text" className="form-control text-capitalize" maxLength="12" placeholder="Enter Product Unit Price"
+                                    <input id="productUPrice" type="number" className="form-control text-capitalize"
+                                           maxLength="12" pattern="[0-9]*"
+                                           placeholder="Enter Product Unit Price"
                                            onChange={onUPriceChange}
                                            value={UPriceValue} />
                                 </div>
                             </div>
+                            <br />
+                            <label>Remarks : </label>
+                            <textarea id="productRemarks" className="form-control text-capitalize"
+                                   maxLength="50"
+                                   placeholder="Enter Remarks"
+                                   onChange={onRemarksChange}
+                                   value={RemarksValue} />
                         </div>
                     </div>
                     <br />
@@ -131,6 +166,7 @@ function UploadProductPage() {
                             <button type="submit" className="btn btn-block btn-primary mt-3" id="btnSubmit">Submit</button>
                         </div>
                     </div>
+
                 </form>
             </div>
         </div>

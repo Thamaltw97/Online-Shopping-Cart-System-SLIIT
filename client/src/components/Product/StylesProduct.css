@@ -1,0 +1,8 @@
+input[id="productUPrice"]::-webkit-outer-spin-button,
+input[id="productUPrice"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[id="productUPrice"] {
+    -moz-appearance: textfield;
+}

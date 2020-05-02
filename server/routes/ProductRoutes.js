@@ -1,5 +1,6 @@
 const router = require('express').Router();
 let Product = require('../models/ProductModel');
+const multer = require('multer');
 
 //Get all products route
 router.route('/').get((req, res) => {
@@ -33,6 +34,37 @@ router.route('/add').post((req, res) => {
     newProduct.save()
     .then(() => res.json('Successfully added the product.'))
     .catch(err => res.status(400).json('Error: ' + err));
+
+});
+
+//Configure storage variable to uploads folder
+let storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './uploads/')
+    },
+    filename: (req, file, cb) => {
+        cb(null, `${Date.now()}_${file.originalname}`)
+    },
+    fileFilter: (req, file, cb) => {
+        const ext = path.extname(file.originalname)
+        if (ext !== '.jpg' || ext !== '.png') {
+            return cb(res.status(400).end('only jpg, png are allowed'), false);
+        }
+        cb(null, true)
+    }
+});
+
+let upload = multer({ storage: storage }).single("file");
+
+//Add uploads to node server route (using multer) 
+router.route('/uploadimage').post((req, res) => {
+
+    upload(req, res, err => {
+        if (err) {
+            return res.json({ success: false, err });
+        }
+        return res.json({ success: true, image: res.req.file.path, fileName: res.req.file.filename })
+    })
 
 });
 

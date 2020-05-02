@@ -8,3 +8,6 @@
 # config/keys MongoURI
 /server/config
 
+# uploads in server
+/server/uploads
+

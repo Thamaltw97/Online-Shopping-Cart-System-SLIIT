@@ -52,9 +52,9 @@ const productSchema = new Schema({
         required: true,
         min: 0
     },
-    productImgUrl: {
-        type : String,
-        default: ""
+    productImages: {
+        type : Array,
+        default: []
     },
     productRemarks: {
         type : String,
