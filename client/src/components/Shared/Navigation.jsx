@@ -1,17 +1,29 @@
 import React, {Component} from "react";
 import 'bootstrap/dist/css/bootstrap.css';
+//import { Menu } from 'antd';
 import { Link } from "react-router-dom";
 
 class Navigation extends Component{
     render() {
         return(
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <span className="navbar-brand mb-0 h1">Online Shopping Stop</span>
 
-                <form className="form-inline my-2 my-lg-0 ml-auto">
-                    <a href="https://github.com/Thamaltw97/Online-Shopping-Cart-System-SLIIT"><h1><span className="fa fa-github"></span></h1></a>
-                </form>
-            </nav>
+                    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+                        <span className="navbar-brand mb-0 h1">Online Fashion Stop</span>
+                        <div className="collapse navbar-collapse" id="navbarNav">
+                            <ul className="navbar-nav">
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/product/upload">
+                                        Upload
+                                    </Link>
+                                </li>
+                            </ul>
+                            <form className="form-inline my-2 my-lg-0 ml-auto">
+                                <a href="https://github.com/Thamaltw97/Online-Shopping-Cart-System-SLIIT"><h1><span className="fa fa-github"></span></h1></a>
+                            </form>
+                        </div>
+                    </nav>
+
+
         );
     }
 
