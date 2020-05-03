@@ -28,6 +28,7 @@ const productsRouter = require('./routes/ProductRoutes');
 //Use routers
 app.use('/api/products', productsRouter);
 
+app.use('/uploads', express.static('uploads'));
 
 // Start server
 app.listen(port, () => {

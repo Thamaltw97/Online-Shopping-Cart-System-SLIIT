@@ -2,12 +2,14 @@ const router = require('express').Router();
 let Product = require('../models/ProductModel');
 const multer = require('multer');
 
+
 //Get all products route
 router.route('/').get((req, res) => {
     Product.find()
         .then(products => res.json(products))
         .catch(err => res.status(400).send('Error: ' + err));
 });
+
 
 //Add new product route
 router.route('/add').post((req, res) => {
@@ -17,7 +19,9 @@ router.route('/add').post((req, res) => {
     const productBrand = req.body.productBrand;
     const productColour = req.body.productColour;
     const productSize = req.body.productSize;
-    const productImgUrl = req.body.productImgUrl;
+    const productQuantity = req.body.productQuantity;
+    const productUnitPrice = req.body.productUnitPrice;
+    const productImages = req.body.productImages;
     const productRemarks = req.body.productRemarks;
 
     const newProduct = new Product({
@@ -27,7 +31,9 @@ router.route('/add').post((req, res) => {
         productBrand,
         productColour,
         productSize,
-        productImgUrl,
+        productQuantity,
+        productUnitPrice,
+        productImages,
         productRemarks
     });
 
@@ -36,6 +42,46 @@ router.route('/add').post((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 
 });
+
+
+//Get product by id route
+router.route('/:id').get((req, res) => {
+   Product.findById(req.params.id)
+       .then(product => res.json(product))
+       .catch(err => res.status(400).json('Error: ' + err));
+});
+
+
+//Update product by id route
+router.route('/update/:id').put((req, res) => {
+   Product.findById(req.params.id)
+       .then(product => {
+           product.productName = req.body.productName;
+           product.productDesc = req.body.productDesc;
+           product.productCategory = req.body.productCategory;
+           product.productBrand = req.body.productBrand;
+           product.productColour = req.body.productColour;
+           product.productSize = req.body.productSize;
+           product.productQuantity = req.body.productQuantity;
+           product.productUnitPrice = req.body.productUnitPrice;
+           product.productImages = req.body.productImages;
+           product.productRemarks = req.body.productRemarks;
+
+           product.save()
+               .then(() => res.json('Successfully Updated. (Product id: ' + req.params.id + ')'))
+               .catch(err => res.status(400).json('Error: ' + err));
+       })
+       .catch(err => res.status(400).json('Error: ' + err));
+});
+
+
+//Delete product by id route
+router.route('/delete/:id').delete((req, res) => {
+    Product.findByIdAndDelete(req.params.id)
+        .then(() => res.json('Successfully Deleted. (Product id: ' + req.params.id + ')'))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
 
 //Configure storage variable to uploads folder
 let storage = multer.diskStorage({
@@ -47,16 +93,19 @@ let storage = multer.diskStorage({
     },
     fileFilter: (req, file, cb) => {
         const ext = path.extname(file.originalname)
-        if (ext !== '.jpg' || ext !== '.png') {
-            return cb(res.status(400).end('only jpg, png are allowed'), false);
+        if (file.mimetype === 'image/jpg' || file.mimetype === 'image/jpeg' || file.mimetype === 'image/jpg') {
+            cb(null, true)
         }
-        cb(null, true)
+        else{
+            return cb(res.status(400).json('Only jpg, jpeg, png are allowed'), false);
+        }
+
     }
 });
 
 let upload = multer({ storage: storage }).single("file");
 
-//Add uploads to node server route (using multer) 
+//Add uploads to node server route (using multer)
 router.route('/uploadimage').post((req, res) => {
 
     upload(req, res, err => {
