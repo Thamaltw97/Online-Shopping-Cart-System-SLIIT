@@ -41,10 +41,6 @@ const discountSchema = new Schema({
             }
         }
     ],
-    discountImgUrl: {
-        type : String,
-        default: ""
-    },
     discountRemarks: {
         type : String,
         default: "",

@@ -7,7 +7,7 @@ const multer = require('multer');
 router.route('/').get((req, res) => {
     Product.find()
         .then(products => res.json(products))
-        .catch(err => res.status(400).send('Error: ' + err));
+        .catch(err => res.status(400).json('Error: ' + err));
 });
 
 
@@ -38,7 +38,7 @@ router.route('/add').post((req, res) => {
     });
 
     newProduct.save()
-    .then(() => res.json('Successfully added the product.'))
+    .then(() => res.json('Successfully Saved the product.'))
     .catch(err => res.status(400).json('Error: ' + err));
 
 });
@@ -92,14 +92,12 @@ let storage = multer.diskStorage({
         cb(null, `${Date.now()}_${file.originalname}`)
     },
     fileFilter: (req, file, cb) => {
-        const ext = path.extname(file.originalname)
         if (file.mimetype === 'image/jpg' || file.mimetype === 'image/jpeg' || file.mimetype === 'image/jpg') {
             cb(null, true)
         }
         else{
             return cb(res.status(400).json('Only jpg, jpeg, png are allowed'), false);
         }
-
     }
 });
 

@@ -24,9 +24,11 @@ mongoose
 
 //Import routers from routes directory
 const productsRouter = require('./routes/ProductRoutes');
+const discountsRouter = require('./routes/DiscountRoutes');
 
 //Use routers
 app.use('/api/products', productsRouter);
+app.use('/api/discounts', discountsRouter);
 
 app.use('/uploads', express.static('uploads'));
 
