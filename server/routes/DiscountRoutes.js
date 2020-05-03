@@ -43,3 +43,31 @@ router.route('/add').post((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 
 });
+
+
+//Update discount by id route
+router.route('/update/:id').put((req, res) => {
+    Discount.findById(req.params.id)
+        .then(discount => {
+            discount.discountType = req.body.discountType;
+            discount.discountDesc = req.body.discountDesc;
+            discount.discountAmount = req.body.discountAmount;
+            discount.discountCoupon = req.body.discountCoupon;
+            discount.discountProductCategory = req.body.discountProductCategory;
+            discount.discountProducts = req.body.discountProducts;
+            discount.discountRemarks = req.body.discountRemarks;
+
+            discount.save()
+                .then(() => res.json('Successfully Updated. (Discount id: ' + req.params.id + ')'))
+                .catch(err => res.status(400).json('Error: ' + err));
+        })
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
+
+//Delete discount by id route
+router.route('/delete/:id').delete((req, res) => {
+    Discount.findByIdAndDelete(req.params.id)
+        .then(() => res.json('Successfully Deleted. (Discount id: ' + req.params.id + ')'))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
