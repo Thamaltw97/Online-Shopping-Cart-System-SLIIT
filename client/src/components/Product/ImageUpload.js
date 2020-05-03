@@ -28,8 +28,19 @@ function ImageUpload(props) {
                 alert('Failed to save the image in the server !');
             }
         })
+    };
 
-    }
+    const onDelete = (image) => {
+
+        const currentIndex = Images.indexOf(image);
+
+        let newImages = [...Images];
+        newImages.splice(currentIndex, 1);
+
+        setImages(newImages);
+        props.refreshFunction(newImages);
+
+    };
 
     return (
         <div style={{ display:'flex', justifyContent:'space-between' }}>
@@ -51,8 +62,8 @@ function ImageUpload(props) {
             <div style={{ display:'flex', width:'250px', height:'200px', overflowX: 'scroll' }} >
 
                 {Images.map((image, index) =>(
-                    <div key={index}>
-                        <img style={{ minWidth: '250px', width: '250px', height: '200px'}}
+                    <div onClick={() => onDelete(image)} key={index}>
+                        <img style={{ minWidth: '230px', width: '230px', height: '200px'}}
                              src={`http://localhost:5000/${image}`}
                              alt={`productImg-${index}`} />
                     </div>

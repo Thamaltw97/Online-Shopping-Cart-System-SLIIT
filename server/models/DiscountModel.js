@@ -48,6 +48,6 @@ const discountSchema = new Schema({
     }
 });
 
-const Discount = mongoose.model('Product', discountSchema);
+const Discount = mongoose.model('Discount', discountSchema);
 
 module.exports = Discount;

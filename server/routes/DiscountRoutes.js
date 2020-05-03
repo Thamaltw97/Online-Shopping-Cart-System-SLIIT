@@ -13,7 +13,7 @@ router.route('/').get((req, res) => {
 //Get discount by id route
 router.route('/:id').get((req, res) => {
     Discount.findById(req.params.id)
-        .then(product => res.json(product))
+        .then(discount => res.json(discount))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
@@ -71,3 +71,5 @@ router.route('/delete/:id').delete((req, res) => {
         .then(() => res.json('Successfully Deleted. (Discount id: ' + req.params.id + ')'))
         .catch(err => res.status(400).json('Error: ' + err));
 });
+
+module.exports = router;

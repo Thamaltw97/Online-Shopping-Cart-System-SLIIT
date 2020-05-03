@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import ImgUpload from './ImageUpload';
 import './StylesProduct.css';
+import Axios from "axios";
 
 const Categories = [
     { key: 1, value: "Shirts" },
@@ -18,12 +19,14 @@ const Sizes = [
     { key: 5, value: "X-Large" }
 ];
 
-function UploadProductPage() {
+function UploadProductPage(props) {
 
     const [NameValue, setNameValue] = useState("");
     const [DescValue, setDescValue] = useState("");
+    const [CategoryValue, setCategoryValue] = useState(0);
     const [BrandValue, setBrandValue] = useState("");
     const [ColourValue, setColourValue] = useState("");
+    const [SizeValue, setSizeValue] = useState(0);
     const [QtyValue, setQtyValue] = useState();
     const [UPriceValue, setUPriceValue] = useState();
     const [RemarksValue, setRemarksValue] = useState("");
@@ -37,12 +40,20 @@ function UploadProductPage() {
         setDescValue(e.currentTarget.value);
     };
 
+    const onCategoryChange = (e) => {
+        setCategoryValue(e.currentTarget.value);
+    };
+
     const onBrandChange = (e) => {
         setBrandValue(e.currentTarget.value);
     };
 
     const onColourChange = (e) => {
         setColourValue(e.currentTarget.value);
+    };
+
+    const onSizeChange = (e) => {
+        setSizeValue(e.currentTarget.value);
     };
 
     const onQtyChange = (e) => {
@@ -62,12 +73,39 @@ function UploadProductPage() {
         setImages(newImages);
     };
 
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        const productObj = {
+            productName: NameValue,
+            productDesc: DescValue,
+            productCategory: CategoryValue,
+            productBrand: BrandValue,
+            productColour: ColourValue,
+            productSize: SizeValue,
+            productQuantity: QtyValue,
+            productUnitPrice: UPriceValue,
+            productImages: Images,
+            productRemarks: RemarksValue
+        };
+
+        Axios.post('http://localhost:5000/api/products/add', productObj)
+            .then(res => {
+                alert(res.data);
+                props.history.push('/product/upload');
+            })
+            .catch(err => {
+                alert('Error: ' + err);
+            });
+
+    };
+
 
     //render() {
     return (
         <div className="container pt-3 mt-3 mb-5" >
             <div className="card card-body my-0 bg-light">
-                <form >
+                <form onSubmit={onSubmit}>
 
                     <div className="row">
                         <div className="col-md-2"></div>
@@ -77,7 +115,7 @@ function UploadProductPage() {
                             <br />
 
                             {/*DropZone*/}
-                            <ImgUpload refreshFunction={updateImages} placeholder={Images}/>
+                            <ImgUpload refreshFunction={updateImages} />
                             <br />
                             <br />
 
@@ -98,9 +136,9 @@ function UploadProductPage() {
                             <div className="row">
                                 <div className="col-md-6">
                                     <label style={{ marginRight: '10px' }}>Product Category : </label>
-                                    <select className="form-control">
+                                    <select className="form-control" onChange={onCategoryChange}>
                                         {Categories.map(item => (
-                                            <option key={item.key} value={item.key}>
+                                            <option key={item.key} value={item.value}>
                                                 {item.value}
                                             </option>
                                         ))}
@@ -108,9 +146,9 @@ function UploadProductPage() {
                                 </div>
                                 <div className="col-md-6">
                                     <label>Product Size : </label>
-                                    <select className="form-control">
+                                    <select className="form-control" onChange={onSizeChange}>
                                         {Sizes.map(item => (
-                                            <option key={item.key} value={item.key}>
+                                            <option key={item.key} value={item.value}>
                                                 {item.value}
                                             </option>
                                         ))}
@@ -163,7 +201,10 @@ function UploadProductPage() {
                     <div className="row">
                         <div className="col-md-2"></div>
                         <div className="col-md-8">
-                            <button type="submit" className="btn btn-block btn-primary mt-3" id="btnSubmit">Submit</button>
+                            <button type="submit" className="btn btn-block btn-primary mt-3"
+                                    id="btnSubmit"
+                                    onClick={onSubmit}
+                            >Submit</button>
                         </div>
                     </div>
 
