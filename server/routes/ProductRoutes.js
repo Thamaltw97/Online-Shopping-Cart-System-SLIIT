@@ -6,8 +6,8 @@ const multer = require('multer');
 //Get all products route
 router.route('/').get((req, res) => {
     Product.find()
-        .then(products => res.json(products))
-        .catch(err => res.status(400).json('Error: ' + err));
+        .then(products => res.json({ success: true, products }))
+        .catch(err => res.status(400).json({ success: false, err }));
 });
 
 

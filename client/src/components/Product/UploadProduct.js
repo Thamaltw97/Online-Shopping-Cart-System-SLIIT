@@ -76,6 +76,11 @@ function UploadProductPage(props) {
     const onSubmit = (e) => {
         e.preventDefault();
 
+        if(!NameValue || !DescValue || !BrandValue || !ColourValue
+            || !QtyValue || !UPriceValue || !RemarksValue || !Images) {
+            return alert('Fill all the fields first !');
+        }
+
         const productObj = {
             productName: NameValue,
             productDesc: DescValue,

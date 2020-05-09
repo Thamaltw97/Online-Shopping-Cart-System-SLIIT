@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //import { library } from "@fortawesome/fontawesome-svg-core";
 import Navigation from "./components/Shared/Navigation";
 import UploadProduct from './components/Product/UploadProduct';
+import HomePage from './components/Home/HomePage';
 
 class App extends React.Component {
 
@@ -18,6 +19,7 @@ class App extends React.Component {
                         <div>
                             <Switch>
                                 <Route path="/product/upload" component={UploadProduct} />
+                                <Route path="/" component={HomePage}/>
                             </Switch>
                         </div>
                     </Router>

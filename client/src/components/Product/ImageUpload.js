@@ -59,11 +59,11 @@ function ImageUpload(props) {
                 )}
             </DropZone>
 
-            <div style={{ display:'flex', width:'250px', height:'200px', overflowX: 'scroll' }} >
+            <div style={{ display:'flex', width:'200px', height:'250px', overflowX: 'scroll' }} >
 
                 {Images.map((image, index) =>(
                     <div onClick={() => onDelete(image)} key={index}>
-                        <img style={{ minWidth: '230px', width: '230px', height: '200px'}}
+                        <img style={{ minWidth: '200px', width: '200px', height: '250px'}}
                              src={`http://localhost:5000/${image}`}
                              alt={`productImg-${index}`} />
                     </div>
