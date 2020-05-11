@@ -47,7 +47,7 @@ router.route('/add').post((req, res) => {
 //Get product by id route
 router.route('/:id').get((req, res) => {
    Product.findById(req.params.id)
-       .then(product => res.json(product))
+       .then(product => res.json({ success: true, product }))
        .catch(err => res.status(400).json('Error: ' + err));
 });
 
@@ -58,18 +58,19 @@ router.route('/update/:id').put((req, res) => {
        .then(product => {
            product.productName = req.body.productName;
            product.productDesc = req.body.productDesc;
-           product.productCategory = req.body.productCategory;
+           //product.productCategory = req.body.productCategory;
            product.productBrand = req.body.productBrand;
-           product.productColour = req.body.productColour;
-           product.productSize = req.body.productSize;
+           //product.productColour = req.body.productColour;
+           //product.productSize = req.body.productSize;
            product.productQuantity = req.body.productQuantity;
            product.productUnitPrice = req.body.productUnitPrice;
-           product.productImages = req.body.productImages;
-           product.productRemarks = req.body.productRemarks;
+           //product.productImages = req.body.productImages;
+           //product.productRemarks = req.body.productRemarks;
 
+           let successMsg = 'Successfully Updated. (Product id: ' + req.params.id + ')';
            product.save()
-               .then(() => res.json('Successfully Updated. (Product id: ' + req.params.id + ')'))
-               .catch(err => res.status(400).json('Error: ' + err));
+               .then(() => res.json({ success: true, successMsg }))
+               .catch(err => res.status(400).json({ success: false, err }));
        })
        .catch(err => res.status(400).json('Error: ' + err));
 });

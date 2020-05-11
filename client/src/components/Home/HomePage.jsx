@@ -34,7 +34,7 @@ function HomePage() {
 
     const renderCards = Products.map((product, index) => {
 
-        return <Col lg={6} md={8} xs={24}>
+        return <Col lg={6} md={8} xs={24} key={index}>
             <Card
                 hoverable={true}
                 cover={<ImageSlider images={product.productImages} />}

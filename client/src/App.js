@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navigation from "./components/Shared/Navigation";
 import UploadProduct from './components/Product/UploadProduct';
 import HomePage from './components/Home/HomePage';
+import StoreManagerDashboard from "./components/Product/StoreManagerDashboard";
+import EditProduct from "./components/Product/EditProduct";
 
 class App extends React.Component {
 
@@ -19,6 +21,8 @@ class App extends React.Component {
                         <div>
                             <Switch>
                                 <Route path="/product/upload" component={UploadProduct} />
+                                <Route path="/product/storemanager" component={StoreManagerDashboard} />
+                                <Route path="/product/edit/:id" component={EditProduct} />
                                 <Route path="/" component={HomePage}/>
                             </Switch>
                         </div>
