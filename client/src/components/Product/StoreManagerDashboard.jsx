@@ -64,13 +64,18 @@ class StoreManagerDashboard extends Component{
         return (
             <>
             <div style={{ width: '75%', margin: '3rem auto' }}>
+                <div style={{ textAlign: 'center' }}>
+                    <h2>Store Manager Dashboard  <span className="fas fa-air-freshener"></span></h2>
+                </div>
+                <br />
+                <br />
                 <div className="row">
                     <div className="col-md-3">
                         <h3>Product List</h3>
                     </div>
                     <div className="col-md-6"><p> </p></div>
                     <div className="col-md-3">
-                        <button className="btn" onClick={() => this.nextPath('/product/upload')}><i className="fa fa-plus"></i> Add New Product</button>
+                        <button className="btn" id="btnAddNewProduct" onClick={() => this.nextPath('/product/upload')}><i className="fa fa-plus"></i> Add New Product</button>
                     </div>
                 </div>
 

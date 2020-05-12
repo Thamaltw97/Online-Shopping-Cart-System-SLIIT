@@ -37,7 +37,7 @@ function HomePage() {
         return <Col lg={6} md={8} xs={24} key={index}>
             <Card
                 hoverable={true}
-                cover={<ImageSlider images={product.productImages} />}
+                cover={<a href={`/product/${product._id}`}><ImageSlider images={product.productImages} /></a>}
             >
 
                 <Meta

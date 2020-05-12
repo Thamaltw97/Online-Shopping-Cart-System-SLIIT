@@ -81,7 +81,7 @@ class EditProduct extends Component{
             productBrand: this.state.productBrand,
             productQuantity: this.state.productQuantity,
             productUnitPrice: this.state.productUnitPrice,
-        }
+        };
         Axios.put('http://localhost:5000/api/products/update/'+this.state.productId, obj)
             .then(res => {
                 if (res.data.success){
@@ -97,18 +97,21 @@ class EditProduct extends Component{
 
     onDelete(e) {
         e.preventDefault();
-        Axios.delete('http://localhost:5000/api/products/delete/'+this.state.productId)
+        Axios.delete('http://localhost:5000/api/products/delete/' + this.state.productId)
             .then(res => {
-                if (res.data.success){
+                if (res.data.success) {
                     alert(res.data.delSuccessMsg);
                 } else {
-                    alert('Error from server: '+ res.data.err);
+                    alert('Error from server: ' + res.data.err);
                 }
             })
-            .catch(err => {console.log('Error from client: ' + err)});
+            .catch(err => {
+                console.log('Error from client: ' + err)
+            });
 
-        this.props.history.push('/product/storemanager');
+        //this.props.history.push('/product/storemanager');
     }
+
 
     render() {
         return (
@@ -174,7 +177,9 @@ class EditProduct extends Component{
                                 <div className="col-md-4">
                                     <button type="submit" className="btn btn-block btn-danger mt-3"
                                             id="btnDelete"
-                                            onClick={this.onDelete}
+                                            onClick={() => {if (window.confirm('Are you sure to delete this record?')) {
+                                                this.onDelete.bind(this)
+                                            }}}
                                     >Delete Product</button>
                                 </div>
                             </div>
