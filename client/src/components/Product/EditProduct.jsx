@@ -15,6 +15,7 @@ class EditProduct extends Component{
         this.onQtyChange = this.onQtyChange.bind(this);
         this.onUPriceChange = this.onUPriceChange.bind(this);
         this.onUpdate = this.onUpdate.bind(this);
+        this.onDelete = this.onDelete.bind(this);
 
         this.state = {
             productName: '',
@@ -33,7 +34,8 @@ class EditProduct extends Component{
                     productDesc: response.data.product.productDesc,
                     productBrand: response.data.product.productBrand,
                     productQuantity: response.data.product.productQuantity,
-                    productUnitPrice: response.data.product.productUnitPrice
+                    productUnitPrice: response.data.product.productUnitPrice,
+                    productId: this.props.match.params.id
                 });
             })
             .catch(function (err) {
@@ -80,10 +82,25 @@ class EditProduct extends Component{
             productQuantity: this.state.productQuantity,
             productUnitPrice: this.state.productUnitPrice,
         }
-        Axios.put('http://localhost:5000/api/products/update/'+this.props.match.params.id, obj)
+        Axios.put('http://localhost:5000/api/products/update/'+this.state.productId, obj)
             .then(res => {
                 if (res.data.success){
                     alert(res.data.successMsg);
+                } else {
+                    alert('Error from server: '+ res.data.err);
+                }
+            })
+            .catch(err => {console.log('Error from client: ' + err)});
+
+        this.props.history.push('/product/storemanager');
+    }
+
+    onDelete(e) {
+        e.preventDefault();
+        Axios.delete('http://localhost:5000/api/products/delete/'+this.state.productId)
+            .then(res => {
+                if (res.data.success){
+                    alert(res.data.delSuccessMsg);
                 } else {
                     alert('Error from server: '+ res.data.err);
                 }
@@ -148,11 +165,17 @@ class EditProduct extends Component{
                             <br />
                             <div className="row">
                                 <div className="col-md-2"></div>
-                                <div className="col-md-8">
+                                <div className="col-md-4">
                                     <button type="submit" className="btn btn-block btn-primary mt-3"
-                                            id="btnSubmit"
+                                            id="btnUpdate"
                                             onClick={this.onUpdate}
                                     >Update</button>
+                                </div>
+                                <div className="col-md-4">
+                                    <button type="submit" className="btn btn-block btn-danger mt-3"
+                                            id="btnDelete"
+                                            onClick={this.onDelete}
+                                    >Delete Product</button>
                                 </div>
                             </div>
 

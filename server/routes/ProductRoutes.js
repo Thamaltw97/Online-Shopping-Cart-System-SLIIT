@@ -78,8 +78,9 @@ router.route('/update/:id').put((req, res) => {
 
 //Delete product by id route
 router.route('/delete/:id').delete((req, res) => {
+    let delSuccessMsg = 'Successfully Deleted. (Product id: ' + req.params.id + ')';
     Product.findByIdAndDelete(req.params.id)
-        .then(() => res.json('Successfully Deleted. (Product id: ' + req.params.id + ')'))
+        .then(() => res.json({ success: true, delSuccessMsg }))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
