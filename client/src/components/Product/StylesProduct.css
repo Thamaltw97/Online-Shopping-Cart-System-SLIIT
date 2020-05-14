@@ -34,3 +34,8 @@ input[id="productUPrice"] {
 #btnDiscountPanel:hover {
     background-color: limegreen;
 }
+
+#spanBeforePrice {
+    color: red;
+    text-decoration: line-through;
+}
