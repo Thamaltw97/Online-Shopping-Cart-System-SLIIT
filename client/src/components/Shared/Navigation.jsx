@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-//import { Menu } from 'antd';
+// import { Menu } from 'antd';
 import { Link } from "react-router-dom";
+import AuthOptions from "../auth/AuthOptions";
 
 class Navigation extends Component{
     render() {
@@ -19,6 +20,11 @@ class Navigation extends Component{
                     <li className="nav-item">
                         <Link className="nav-link" to="/product/upload">
                             Upload
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link">
+                           <AuthOptions/>
                         </Link>
                     </li>
                 </ul>
