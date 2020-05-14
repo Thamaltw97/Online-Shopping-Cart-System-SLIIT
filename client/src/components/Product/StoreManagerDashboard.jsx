@@ -53,8 +53,12 @@ class StoreManagerDashboard extends Component{
         })
     }
 
-    nextPath() {
+    nextUploadPath() {
         this.props.history.push('/product/upload');
+    }
+
+    nextDiscountPath() {
+        this.props.history.push('/product/discount');
     }
 
     render() {
@@ -73,9 +77,11 @@ class StoreManagerDashboard extends Component{
                     <div className="col-md-3">
                         <h3>Product List</h3>
                     </div>
-                    <div className="col-md-6"><p> </p></div>
-                    <div className="col-md-3">
-                        <button className="btn" id="btnAddNewProduct" onClick={() => this.nextPath('/product/upload')}><i className="fa fa-plus"></i> Add New Product</button>
+                    <div className="col-md-5"><p> </p></div>
+                    <div className="col-md-4">
+                        <button className="btn" id="btnAddNewProduct" onClick={() => this.nextUploadPath('/product/upload')}><i className="fa fa-plus"></i> Add New Product</button>
+                        <span>  </span>
+                        <button className="btn" id="btnDiscountPanel" onClick={() => this.nextDiscountPath('/product/discount')}><i className="fas fa-percent"></i> Discount Panel</button>
                     </div>
                 </div>
 

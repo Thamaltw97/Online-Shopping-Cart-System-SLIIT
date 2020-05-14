@@ -2,6 +2,7 @@ import 'antd/es/card/style/index.css';
 import 'antd/es/col/style/css';
 import 'antd/es/row/style/css';
 import ImageSlider from "./ImageSlider";
+//import ProductsById from "./Sections/ProductsById";
 import React, {useEffect, useState} from "react";
 import Axios from "axios";
 import {Row, Col, Card} from "antd";
@@ -11,6 +12,9 @@ const { Meta } = Card;
 function HomePage() {
 
     const [Products, setProducts] = useState([]);
+    // const [Filters, setFilters] = useState({
+    //     categories: []
+    // });
 
     useEffect(() => {
 
@@ -48,12 +52,19 @@ function HomePage() {
         </Col>
     });
 
+    // const handleFilters = (filters, categ) => {
+    //     console.log(filters)
+    // };
 
     return(
         <div style={{ width: '75%', margin: '3rem auto' }}>
             <div style={{ textAlign: 'center' }}>
                 <h4>Fashion At Your Fingertips <span className="fas fa-hat-cowboy"></span></h4>
             </div>
+
+            {/*<ProductsById*/}
+            {/*    handleFilters={filters => handleFilters(filters, "categories")}*/}
+            {/*/>*/}
 
             {Products.length === 0 ?
                 <div style={{ display: 'flex', height: '300px', justifyContent: 'center', alignItems: 'center' }}>

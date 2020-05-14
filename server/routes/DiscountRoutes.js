@@ -20,21 +20,21 @@ router.route('/:id').get((req, res) => {
 
 //Add new discount route
 router.route('/add').post((req, res) => {
-    const discountType = req.body.discountType;
+    const discountCouponName = req.body.discountCouponName;
     const discountDesc = req.body.discountDesc;
     const discountAmount = req.body.discountAmount;
-    const discountCoupon = req.body.discountCoupon;
-    const discountProductCategory = req.body.discountProductCategory;
-    const discountProducts = req.body.discountProducts;
+    const discountProductId = req.body.discountProductId;
+    //const discountProductCategory = req.body.discountProductCategory;
+    //const discountProducts = req.body.discountProducts;
     const discountRemarks = req.body.discountRemarks;
 
     let newDiscount = new Discount({
-        discountType,
+        discountCouponName,
         discountDesc,
         discountAmount,
-        discountCoupon,
-        discountProductCategory,
-        discountProducts,
+        discountProductId,
+        //discountProductCategory,
+        //discountProducts,
         discountRemarks
     });
 
@@ -71,5 +71,14 @@ router.route('/delete/:id').delete((req, res) => {
         .then(() => res.json('Successfully Deleted. (Discount id: ' + req.params.id + ')'))
         .catch(err => res.status(400).json('Error: ' + err));
 });
+
+
+//Get discount by product id route
+router.route('/productdiscount/:id').get((req, res) => {
+    Discount.find({"discountProductId" : req.params.id})
+        .then(discount => res.json(discount))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
 
 module.exports = router;
