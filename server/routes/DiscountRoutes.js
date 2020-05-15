@@ -40,7 +40,7 @@ router.route('/add').post((req, res) => {
 
     newDiscount.save()
         .then(() => res.json('Successfully Saved the discount.'))
-        .catch(err => res.status(400).json('Error: ' + err));
+        .catch(err => res.status(400).json('Error from server: ' + err));
 
 });
 

@@ -10,6 +10,7 @@ import EditProduct from "./components/Product/EditProduct";
 import DetailProduct from "./components/Product/ProductDetailPage/DetailProduct";
 import DiscountPanel from "./components/Product/Discount/DiscountPanel";
 import EditDiscount from "./components/Product/Discount/EditDiscount";
+import AddDiscount from "./components/Product/Discount/AddDiscount";
 
 class App extends React.Component {
 
@@ -25,6 +26,7 @@ class App extends React.Component {
                             <Switch>
                                 <Route path="/product/discount" component={DiscountPanel} />
                                 <Route path="/discount/edit/:id" component={EditDiscount} />
+                                <Route path="/product/adddiscount/:id" component={AddDiscount} />
                                 <Route path="/product/upload" component={UploadProduct} />
                                 <Route path="/product/storemanager" component={StoreManagerDashboard} />
                                 <Route path="/product/edit/:id" component={EditProduct} />

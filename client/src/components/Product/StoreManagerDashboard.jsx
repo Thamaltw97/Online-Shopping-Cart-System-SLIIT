@@ -11,7 +11,10 @@ const Product  = props => (
         <td>{props.product.productQuantity}</td>
         <td>{props.product.productUnitPrice}</td>
         <td>
-            <Link to={"/product/edit/"+props.product._id}>Edit</Link>
+            <Link to={"/product/edit/"+props.product._id}>Edit</Link> <span>
+             |
+        </span> <Link to={"/product/adddiscount/"+props.product._id}>Add Discount</Link>
+
         </td>
     </tr>
 );
