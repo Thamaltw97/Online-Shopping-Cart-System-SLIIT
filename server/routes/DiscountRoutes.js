@@ -13,7 +13,7 @@ router.route('/').get((req, res) => {
 //Get discount by id route
 router.route('/:id').get((req, res) => {
     Discount.findById(req.params.id)
-        .then(discount => res.json(discount))
+        .then(discount => res.json({ success: true, discount }))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
@@ -49,27 +49,29 @@ router.route('/add').post((req, res) => {
 router.route('/update/:id').put((req, res) => {
     Discount.findById(req.params.id)
         .then(discount => {
-            discount.discountType = req.body.discountType;
+            discount.discountCouponName = req.body.discountCouponName;
             discount.discountDesc = req.body.discountDesc;
             discount.discountAmount = req.body.discountAmount;
-            discount.discountCoupon = req.body.discountCoupon;
-            discount.discountProductCategory = req.body.discountProductCategory;
-            discount.discountProducts = req.body.discountProducts;
+            //discount.discountProductId = req.body.discountProductId;
+            //discount.discountProductCategory = req.body.discountProductCategory;
+            //discount.discountProducts = req.body.discountProducts;
             discount.discountRemarks = req.body.discountRemarks;
 
+            let successMsg = 'Successfully Updated. (Discount id: ' + req.params.id + ')';
             discount.save()
-                .then(() => res.json('Successfully Updated. (Discount id: ' + req.params.id + ')'))
-                .catch(err => res.status(400).json('Error: ' + err));
+                .then(() => res.json({ success: true, successMsg }))
+                .catch(err => res.status(400).json('Error from server: ' + err));
         })
-        .catch(err => res.status(400).json('Error: ' + err));
+        .catch(err => res.status(400).json(err));
 });
 
 
 //Delete discount by id route
 router.route('/delete/:id').delete((req, res) => {
+    let delSuccessMsg = 'Successfully Deleted. (Discount id: ' + req.params.id + ')';
     Discount.findByIdAndDelete(req.params.id)
-        .then(() => res.json('Successfully Deleted. (Discount id: ' + req.params.id + ')'))
-        .catch(err => res.status(400).json('Error: ' + err));
+        .then(() => res.json({ success: true, delSuccessMsg }))
+        .catch(err => res.status(400).json('Error from server: ' + err));
 });
 
 

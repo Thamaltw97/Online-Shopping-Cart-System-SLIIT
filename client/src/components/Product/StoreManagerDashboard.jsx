@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
 import './StylesProduct.css';
-//import EditProduct from "./EditProduct";
 
 const Product  = props => (
     <tr>
@@ -23,7 +22,7 @@ class StoreManagerDashboard extends Component{
         super(props);
         this.state = {
             products: [],
-            editModelShow: false
+            //editModelShow: false
         };
     }
 
@@ -101,10 +100,7 @@ class StoreManagerDashboard extends Component{
                     </tbody>
                 </table>
             </div>
-            {/*<EditProduct*/}
-            {/*    show={this.state.editModelShow}*/}
-            {/*    onHide={editModelClose}*/}
-            {/*/>*/}
+
             </>
         )
     }

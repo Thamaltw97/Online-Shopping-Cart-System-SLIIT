@@ -8,7 +8,8 @@ import HomePage from './components/Home/HomePage';
 import StoreManagerDashboard from "./components/Product/StoreManagerDashboard";
 import EditProduct from "./components/Product/EditProduct";
 import DetailProduct from "./components/Product/ProductDetailPage/DetailProduct";
-import DiscountPanel from "./components/Product/DiscountPanel";
+import DiscountPanel from "./components/Product/Discount/DiscountPanel";
+import EditDiscount from "./components/Product/Discount/EditDiscount";
 
 class App extends React.Component {
 
@@ -23,6 +24,7 @@ class App extends React.Component {
                         <div>
                             <Switch>
                                 <Route path="/product/discount" component={DiscountPanel} />
+                                <Route path="/discount/edit/:id" component={EditDiscount} />
                                 <Route path="/product/upload" component={UploadProduct} />
                                 <Route path="/product/storemanager" component={StoreManagerDashboard} />
                                 <Route path="/product/edit/:id" component={EditProduct} />

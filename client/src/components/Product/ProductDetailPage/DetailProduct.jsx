@@ -23,7 +23,7 @@ class DetailProduct extends React.Component{
                     Product: response.data.product,
                     productId: this.props.match.params.id
                 });
-                console.log(this.state.Product)
+                //console.log(this.state.Product)
             })
             .catch(function (err) {
                 console.log(err)
@@ -37,7 +37,7 @@ class DetailProduct extends React.Component{
                     Product: response.data.product,
                     productId: this.props.match.params.id
                 });
-                console.log(this.state.Product)
+                //console.log(this.state.Product)
             })
             .catch(function (err) {
                 console.log(err)

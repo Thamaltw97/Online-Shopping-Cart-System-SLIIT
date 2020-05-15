@@ -46,7 +46,7 @@ function HomePage() {
 
                 <Meta
                     title={product.productName}
-                    description={`LKR.${product.productUnitPrice}`}
+                    description={`LKR.${product.productUnitPrice}/=    Category: ${product.productCategory}`}
                 />
             </Card>
         </Col>
@@ -59,13 +59,15 @@ function HomePage() {
     return(
         <div style={{ width: '75%', margin: '3rem auto' }}>
             <div style={{ textAlign: 'center' }}>
-                <h4>Fashion At Your Fingertips <span className="fas fa-hat-cowboy"></span></h4>
+                <h2>Fashion At Your Fingertips <span className="fas fa-hat-cowboy"></span></h2>
             </div>
 
             {/*<ProductsById*/}
             {/*    handleFilters={filters => handleFilters(filters, "categories")}*/}
             {/*/>*/}
-
+            <br />
+            <div className="blink_me"><b>*View products to check amazing discounts*</b></div>
+            <br />
             {Products.length === 0 ?
                 <div style={{ display: 'flex', height: '300px', justifyContent: 'center', alignItems: 'center' }}>
                     <h3>No posts yet...</h3>
@@ -78,9 +80,9 @@ function HomePage() {
             }
             <br />
             <br />
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <button>Load More</button>
-            </div>
+            {/*<div style={{ display: 'flex', justifyContent: 'center' }}>*/}
+            {/*    <button>Load More</button>*/}
+            {/*</div>*/}
         </div>
     )
 
