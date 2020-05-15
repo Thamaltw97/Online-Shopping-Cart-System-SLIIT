@@ -10,13 +10,13 @@ const categorySchema = new Schema({
         minlength: 3,
         maxlength: 30
     },
-    categoryDescription: {
+    categoryDesc: {
         type: String,
         trim: true,
         default: ""
     },
 });
 
-const Product = mongoose.model('Category', categorySchema);
+const Category = mongoose.model('Category', categorySchema);
 
-module.exports = Product;
+module.exports = Category;

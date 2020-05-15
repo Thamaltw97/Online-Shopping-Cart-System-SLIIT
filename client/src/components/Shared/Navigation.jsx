@@ -26,6 +26,11 @@ class Navigation extends Component{
                             Store Manager
                         </Link>
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/admin">
+                            Admin Dashboard
+                        </Link>
+                    </li>
                 </ul>
                 <form className="form-inline my-2 my-lg-0 ml-5">
                     <a href="https://github.com/Thamaltw97/Online-Shopping-Cart-System-SLIIT"><h3><span className="fa fa-github"></span></h3></a>

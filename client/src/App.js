@@ -6,6 +6,8 @@ import Navigation from "./components/Shared/Navigation";
 import UploadProduct from './components/Product/UploadProduct';
 import HomePage from './components/Home/HomePage';
 import AddStoreManagerPage from "./components/StoreManager/AddStoreManager";
+import AddCategoryPage from "./components/StoreManager/AddCategory";
+import AdDashboard from "./components/StoreManager/AdDashboard";
 
 class App extends React.Component {
 
@@ -21,6 +23,8 @@ class App extends React.Component {
                             <Switch>
                                 <Route path="/product/upload" component={UploadProduct} />
                                 <Route path="/storeManager/upload" component={AddStoreManagerPage}/>
+                                <Route path="/category/upload" component={AddCategoryPage}/>
+                                <Route path="/admin" component= {AdDashboard} />
                                 <Route path="/" component={HomePage}/>
                             </Switch>
                         </div>

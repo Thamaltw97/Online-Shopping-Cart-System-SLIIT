@@ -28,7 +28,7 @@ function AddStoreManagerPage(props) {
         e.preventDefault();
 
         if (!smFNameValue || !smLNameValue || !smEmailValue || !smPhoneNoValue || !smPasswordValue) {
-            return alert('Fill all the relevant first !');
+            return alert('Fill all the relevant fields first !');
         }
 
         const storeManagerObj = {
