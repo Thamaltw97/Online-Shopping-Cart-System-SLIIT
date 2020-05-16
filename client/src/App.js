@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navigation from "./components/Shared/Navigation";
 import UploadProduct from './components/Product/UploadProduct';
 import HomePage from './components/Home/HomePage';
+import  WishlistPage from './components/WishList/wishlistPage'
+import DeleteWishlist from "./components/WishList/DeleteWishlist";
 
 class App extends React.Component {
 
@@ -19,6 +21,7 @@ class App extends React.Component {
                         <div>
                             <Switch>
                                 <Route path="/product/upload" component={UploadProduct} />
+                                <Route path="/WishList/wishlist" component={WishlistPage}/>
                                 <Route path="/" component={HomePage}/>
                             </Switch>
                         </div>
