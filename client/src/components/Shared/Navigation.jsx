@@ -17,8 +17,8 @@ class Navigation extends Component{
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/product/upload">
-                            Upload
+                        <Link className="nav-link" to="/product/storemanager">
+                            SM Dashboard
                         </Link>
                     </li>
                     <li className="nav-item">

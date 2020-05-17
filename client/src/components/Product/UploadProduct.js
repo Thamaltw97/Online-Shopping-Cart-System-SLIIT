@@ -97,7 +97,7 @@ function UploadProductPage(props) {
         Axios.post('http://localhost:5000/api/products/add', productObj)
             .then(res => {
                 alert(res.data);
-                props.history.push('/product/upload');
+                props.history.push('/product/storemanager');
             })
             .catch(err => {
                 alert('Error: ' + err);
