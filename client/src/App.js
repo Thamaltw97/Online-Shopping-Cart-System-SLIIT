@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navigation from "./components/Shared/Navigation";
 import UploadProduct from './components/Product/UploadProduct';
 import HomePage from './components/Home/HomePage';
+import  WishlistPage from './components/WishList/wishlistPage'
+//import DeleteWishlist from "./components/WishList/DeleteWishlist";
 import StoreManagerDashboard from "./components/Product/StoreManagerDashboard";
 import EditProduct from "./components/Product/EditProduct";
 import DetailProduct from "./components/Product/ProductDetailPage/DetailProduct";
@@ -28,6 +30,7 @@ class App extends React.Component {
                                 <Route path="/discount/edit/:id" component={EditDiscount} />
                                 <Route path="/product/adddiscount/:id" component={AddDiscount} />
                                 <Route path="/product/upload" component={UploadProduct} />
+                                <Route path="/WishList/wishlist" component={WishlistPage}/>
                                 <Route path="/product/storemanager" component={StoreManagerDashboard} />
                                 <Route path="/product/edit/:id" component={EditProduct} />
                                 <Route path="/product/:id" component={DetailProduct} />
