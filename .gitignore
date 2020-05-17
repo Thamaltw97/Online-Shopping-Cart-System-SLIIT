@@ -11,3 +11,6 @@
 # uploads in server
 /server/uploads
 
+#.env file
+/server/.env
+

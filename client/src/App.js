@@ -13,6 +13,9 @@ import DetailProduct from "./components/Product/ProductDetailPage/DetailProduct"
 import DiscountPanel from "./components/Product/Discount/DiscountPanel";
 import EditDiscount from "./components/Product/Discount/EditDiscount";
 import AddDiscount from "./components/Product/Discount/AddDiscount";
+import Register from "./components/Auth/Register";
+import Login from "./components/Auth/Login";
+
 
 class App extends React.Component {
 
@@ -34,7 +37,9 @@ class App extends React.Component {
                                 <Route path="/product/storemanager" component={StoreManagerDashboard} />
                                 <Route path="/product/edit/:id" component={EditProduct} />
                                 <Route path="/product/:id" component={DetailProduct} />
-                                <Route path="/" component={HomePage}/>
+                                <Route exact path="/" component={HomePage}/>
+                                <Route path="/register" component={Register} />
+                                <Route path="/login" component={Login} />
 
                             </Switch>
                         </div>
