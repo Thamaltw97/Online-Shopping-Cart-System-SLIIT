@@ -46,7 +46,7 @@ function HomePage() {
 
                 <Meta
                     title={product.productName}
-                    description={`LKR.${product.productUnitPrice}/=    Category: ${product.productCategory}`}
+                    description={`LKR.${product.productUnitPrice}/=    Categ.: ${product.productCategory}`}
                 />
             </Card>
         </Col>

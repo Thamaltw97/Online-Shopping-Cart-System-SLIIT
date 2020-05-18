@@ -109,7 +109,7 @@ class EditProduct extends Component{
                 console.log('Error from client: ' + err)
             });
 
-        //this.props.history.push('/product/storemanager');
+        this.props.history.push('/product/storemanager');
     }
 
 
@@ -177,9 +177,10 @@ class EditProduct extends Component{
                                 <div className="col-md-4">
                                     <button type="submit" className="btn btn-block btn-danger mt-3"
                                             id="btnDelete"
-                                            onClick={() => {if (window.confirm('Are you sure to delete this record?')) {
-                                                this.onDelete.bind(this)
-                                            }}}
+                                            // onClick={() => {if (window.confirm('Are you sure to delete this record?')) {
+                                            //     this.onDelete.bind(this)
+                                            // }}}
+                                            onClick={this.onDelete}
                                     >Delete Product</button>
                                 </div>
                             </div>

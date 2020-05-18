@@ -19,7 +19,6 @@ const productSchema = new Schema({
     productCategory: {
         type: String,
         required: true,
-        trim: true,
         minlength: 3,
         maxlength: 30
     },

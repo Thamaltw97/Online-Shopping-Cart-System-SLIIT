@@ -36,6 +36,9 @@ input[id="productUPrice"] {
 }
 
 #spanBeforePrice {
-    color: red;
     text-decoration: line-through;
+}
+
+#spanAfterPrice {
+    color: red;
 }

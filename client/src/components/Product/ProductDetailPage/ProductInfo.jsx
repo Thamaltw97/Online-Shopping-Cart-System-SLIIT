@@ -40,7 +40,7 @@ function ProductInfo(props){
 
     const test = () => {
         if (booVal){
-            return <span id="test"><span id="spanBeforePrice">{Product.productUnitPrice}</span> {PrintAmount}</span>
+            return <div><span id="spanBeforePrice">{Product.productUnitPrice}</span><span id="spanAfterPrice"> {PrintAmount}</span></div>
         } else {
             console.log(PrintAmount)
             return  <span id="test">{PrintAmount}</span>
