@@ -1,10 +1,11 @@
 import 'antd/es/col/style/css';
 import 'antd/es/row/style/css';
 import React from "react";
-import {Row, Col} from "antd";
+import {Row, Col, Button} from "antd";
 import Axios from "axios";
 import ProductImage from "./ProductImage";
 import ProductInfo from "./ProductInfo";
+import '../StylesProduct.css'
 
 class DetailProduct extends React.Component{
 
@@ -44,6 +45,9 @@ class DetailProduct extends React.Component{
             })
     }
 
+    nextCommentPath (){
+        this.props.history.push('/comment/view');
+    };
 
     render() {
         return(
@@ -60,8 +64,19 @@ class DetailProduct extends React.Component{
                     </Col>
                     <Col lg={12} xs={24}>
                         <ProductInfo detail={this.state.Product}/>
+                        <br />
+                        <div className="col-md-6">
+                            <div style={{display: 'flex', justifyContent: 'center'}}>
+                                <Button size="large" shape="round" type="primary"
+                                        onClick={() => this.nextCommentPath('/comment/view')}
+                                >
+                                    View all comments
+                                </Button>
+                            </div>
+                        </div>
                     </Col>
                 </Row>
+
 
             </div>
         )

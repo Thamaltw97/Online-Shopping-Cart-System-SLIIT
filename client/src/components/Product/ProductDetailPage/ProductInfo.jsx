@@ -42,10 +42,44 @@ function ProductInfo(props){
         if (booVal){
             return <div><span id="spanBeforePrice">{Product.productUnitPrice}</span><span id="spanAfterPrice"> {PrintAmount}</span></div>
         } else {
-            console.log(PrintAmount)
+            //console.log(PrintAmount)
             return  <span id="test">{PrintAmount}</span>
         }
     };
+
+    const btnSCart = (e) => {
+        //Enter code for adding item to shopping cart (Should pass user id and product id)
+    };
+
+    const btnWishList = (e) => {
+        e.preventDefault();
+
+        const wishListObj = {
+            productName: Product.productName,
+            productDesc: Product.productDesc,
+            productSize: Product.productSize,
+            productColour: Product.productColour,
+            productUnitPrice: Product.productUnitPrice,
+            wishUserId: localStorage.getItem('user-id')
+        };
+
+        Axios.post('http://localhost:5000/api/wishlists/add', wishListObj)
+            .then(res => {
+                alert(res.data);
+                //props.history.push('/wishlist/wishlist');
+            })
+            .catch(err => {
+                alert('Error: ' + err);
+            });
+    };
+
+    const btnAddComment = (e) => {
+        //Enter code to add comment (Should pass product id and user id)
+    };
+
+    // const nextCommentPath = () => {
+    //     //props.history.push('/comment/view');
+    // };
 
     return (
         <div>
@@ -64,27 +98,52 @@ function ProductInfo(props){
             <br />
             <br />
             <br />
-            <div className="row">
-                <div className="col-md-6">
-                    <div style={{ display: 'flex', justifyContent: 'center' }}>
-                        <Button size="large" shape="round" type="danger"
-                            // onClick
-                        >
-                            Add to Cart
-                        </Button>
+            {localStorage.getItem('user-role') === 'user' ?
+                <div>
+                    <div className="row">
+                        <div className="col-md-6">
+                            <div style={{display: 'flex', justifyContent: 'center'}}>
+                                <Button size="large" shape="round" type="danger"
+                                        onClick={btnSCart}
+                                >
+                                    Add to Cart
+                                </Button>
+                            </div>
+                        </div>
+                        <div className="col-md-6">
+                            <div style={{display: 'flex', justifyContent: 'center'}}>
+                                <Button size="large" shape="round" type="primary"
+                                    onClick={btnWishList}
+                                >
+                                    Add to Wishlist
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div className="row">
+                        <div className="col-md-6">
+                            <div style={{display: 'flex', justifyContent: 'center'}}>
+                                <Button size="large" shape="round" type="danger"
+                                        onClick={btnAddComment}
+                                >
+                                    Add My Comment
+                                </Button>
+                            </div>
+                        </div>
+                        {/*<div className="col-md-6">*/}
+                        {/*    <div style={{display: 'flex', justifyContent: 'center'}}>*/}
+                        {/*        <Button size="large" shape="round" type="primary"*/}
+                        {/*                onClick={nextCommentPath('/comment/view')}*/}
+                        {/*        >*/}
+                        {/*            View all comments*/}
+                        {/*        </Button>*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
                     </div>
                 </div>
-                <div className="col-md-6">
-                    <div style={{ display: 'flex', justifyContent: 'center' }}>
-                        <Button size="large" shape="round" type="primary"
-                            // onClick
-                        >
-                            Add to Wishlist
-                        </Button>
-                    </div>
-                </div>
-            </div>
-
+                : null
+            }
         </div>
     )
 

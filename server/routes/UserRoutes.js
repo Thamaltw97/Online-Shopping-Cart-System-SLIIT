@@ -11,16 +11,16 @@ const auth = require("../middleware/auth");
 router.post("/register", async (req, res) => {
     try{
 
-        let {email, password, passwordCheck, displayName} = req.body;
+        let {email, password, passwordCheck, displayName, userRole} = req.body;
 
 
         //validate
-        if (!email || !password || !passwordCheck)
-            return res.status(400).json({msg: "Not All Fields have been entered!"});
+        // if (!email || !password || !passwordCheck)
+        //     return res.status(400).json({msg: "Not All Fields have been entered!"});
         if (password.length < 5)
             return res.status(400).json({msg: "Password needs to be at least 5 character long"});
-        if (password !== passwordCheck)
-            return res.status(400).json({msg: "Enter the same password"});
+        // if (password !== passwordCheck)
+        //     return res.status(400).json({msg: "Enter the same password"});
 
         const existingUser =  await User.findOne({email: email})
         // console.log(existingUser);
@@ -37,7 +37,8 @@ router.post("/register", async (req, res) => {
             email,
             password: passwordHash,
             // passwordCheck:passwordHash ,
-            displayName
+            displayName,
+            userRole
         });
 
         const savedUser = await newUser.save();
@@ -74,7 +75,7 @@ router.post("/login", async (req, res) => {
                 id: user._id,
                 displayName: user.displayName,
                 email: user.email,
-
+                userType: user.userRole
             }
         })
     }

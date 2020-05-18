@@ -19,6 +19,11 @@ const userSchema = new mongoose.Schema({
     //     minlength:5
     // },
 
+    userRole: {
+        type:String,
+        default:'user'
+    },
+
     displayName: {
         type:String
     }

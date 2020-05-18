@@ -6,8 +6,9 @@ import { Link } from "react-router-dom";
 const Item = props => (
     <tr>
         <td>{props.item.productName}</td>
-        <td>{props.item.productQuantity}</td>
         <td>{props.item.productDesc}</td>
+        <td>{props.item.productColour}</td>
+        <td>{props.item.productSize}</td>
         <td>{props.item.productUnitPrice}</td>
         <td>
             <Link to={"/WishList/delete/"+props.item._id}>Delete</Link>
@@ -26,7 +27,7 @@ export default class WishList extends Component{
     }
 
     componentDidMount() {
-        Axios.get('http://localhost:5000/api/wishlists/')
+        Axios.get('http://localhost:5000/api/wishlists/wishlistbyuser/' + localStorage.getItem('user-id'))
             .then(response => {
                 this.setState({items: response.data.wishlist});
                 //console.log(this.state.items)
@@ -51,8 +52,9 @@ export default class WishList extends Component{
                     <thead>
                     <tr>
                         <th>Item Name</th>
-                        <th>Item Quantity</th>
                         <th>Item Description</th>
+                        <th>Item Colour</th>
+                        <th>Item Size</th>
                         <th>Item Price</th>
                         <th>Action</th>
                     </tr>

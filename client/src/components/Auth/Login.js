@@ -25,7 +25,7 @@ function Login(props) {
 
     const [EmailValue, setEmailValue] = useState("");
     const [PasswordValue, setPasswordValue] = useState("");
-
+    const [Token, setToken] = useState("");
 
 
     const onEmailChange = (e) => {
@@ -57,9 +57,15 @@ function Login(props) {
 
         Axios.post('http://localhost:5000/api/users/login', userObj)
             .then(res => {
-                // alert(res.data);
+                //console.log(res.data);
+                setToken(res.data.token);
+                //console.log(res.data.token)
+                //console.log(res.data.user.id)
+                localStorage.setItem('auth-token', res.data.token);
+                localStorage.setItem('user-id', res.data.user.id);
+                localStorage.setItem('user-role', res.data.user.userType);
                 alert("Successfully Logged in");
-                props.history.push('/');
+                props.history.push('/home');
 
 
             })

@@ -5,12 +5,11 @@ import { Link } from "react-router-dom";
 
 class Navigation extends Component{
 
-    btnLogOut(){
-        localStorage.removeItem('auth-token');
-        localStorage.removeItem('user-id');
-        localStorage.removeItem('user-role');
-        alert('User logged out successfully.');
-    }
+    // btnLogOut(){
+    //     localStorage.removeItem('auth-token');
+    //     localStorage.removeItem('user-id');
+    //     alert('User logged out successfully.');
+    // }
 
     render() {
         return(
@@ -20,33 +19,20 @@ class Navigation extends Component{
                 <span className="navbar-brand mb-0 h1">Online Fashion Stop</span>
                 <ul className="navbar-nav my-2 my-lg-0 ml-auto">
                     <li className="nav-item">
-                        <Link className="nav-link" to="/home">
+                        <Link className="nav-link" to="/">
                             Home
                         </Link>
                     </li>
-                    {/*<li className="nav-item">*/}
-                    {/*    <Link className="nav-link" to="/register">*/}
-                    {/*        SignUp*/}
-                    {/*    </Link>*/}
-                    {/*</li>*/}
-                    {/*<li className="nav-item">*/}
-                    {/*    <Link className="nav-link" to="/login">*/}
-                    {/*        SignIn*/}
-                    {/*    </Link>*/}
-                    {/*</li>*/}
                     <li className="nav-item">
-                        <Link className="nav-link" to="/cart">
-                            Shopping Cart
+                        <Link className="nav-link" to="/register">
+                            SignUp
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/wishlist/wishlist">
-                            Wishlist
+                        <Link className="nav-link" to="/login">
+                            SignIn
                         </Link>
                     </li>
-                    <Link className="nav-link" to="/" onClick={this.btnLogOut}>
-                        SignOut
-                    </Link>
                 </ul>
                 <form className="form-inline my-2 my-lg-0 ml-5">
                     <a href="https://github.com/Thamaltw97/Online-Shopping-Cart-System-SLIIT"><h3><span className="fa fa-github"></span></h3></a>

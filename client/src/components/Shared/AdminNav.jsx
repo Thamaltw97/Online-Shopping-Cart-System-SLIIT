@@ -24,24 +24,9 @@ class Navigation extends Component{
                             Home
                         </Link>
                     </li>
-                    {/*<li className="nav-item">*/}
-                    {/*    <Link className="nav-link" to="/register">*/}
-                    {/*        SignUp*/}
-                    {/*    </Link>*/}
-                    {/*</li>*/}
-                    {/*<li className="nav-item">*/}
-                    {/*    <Link className="nav-link" to="/login">*/}
-                    {/*        SignIn*/}
-                    {/*    </Link>*/}
-                    {/*</li>*/}
                     <li className="nav-item">
-                        <Link className="nav-link" to="/cart">
-                            Shopping Cart
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/wishlist/wishlist">
-                            Wishlist
+                        <Link className="nav-link" to="/admin">
+                            Admin Dashboard
                         </Link>
                     </li>
                     <Link className="nav-link" to="/" onClick={this.btnLogOut}>
