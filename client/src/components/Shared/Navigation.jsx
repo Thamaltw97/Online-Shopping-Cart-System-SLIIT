@@ -17,8 +17,23 @@ class Navigation extends Component{
                         </Link>
                     </li>
                     <li className="nav-item">
+                        <Link className="nav-link" to="/register">
+                            SignUp
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/login">
+                            SignIn
+                        </Link>
+                    </li>
+                    <li className="nav-item">
                         <Link className="nav-link" to="/product/storemanager">
                             SM Dashboard
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/wishlist/wishlist">
+                            Wishlist
                         </Link>
                     </li>
                 </ul>
