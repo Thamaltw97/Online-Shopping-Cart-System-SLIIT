@@ -4,11 +4,11 @@ import './StylesProduct.css';
 import Axios from "axios";
 
 const Categories = [
-    { key: 1, value: "Shirts" },
-    { key: 2, value: "T-Shirts" },
-    { key: 3, value: "Trousers" },
-    { key: 4, value: "Shorts" },
-    { key: 5, value: "Sarongs" }
+    { key: 6, value: "Men's wear" },
+    { key: 7, value: "Women's wear" },
+    { key: 8, value: "Kid's wear" },
+    { key: 9, value: "Accessories" },
+    { key: 10, value: "Shoes" }
 ];
 
 const Sizes = [
@@ -97,7 +97,7 @@ function UploadProductPage(props) {
         Axios.post('http://localhost:5000/api/products/add', productObj)
             .then(res => {
                 alert(res.data);
-                props.history.push('/product/upload');
+                props.history.push('/product/storemanager');
             })
             .catch(err => {
                 alert('Error: ' + err);
@@ -142,9 +142,9 @@ function UploadProductPage(props) {
                                 <div className="col-md-6">
                                     <label style={{ marginRight: '10px' }}>Product Category : </label>
                                     <select className="form-control" onChange={onCategoryChange}>
-                                        {Categories.map(item => (
-                                            <option key={item.key} value={item.value}>
-                                                {item.value}
+                                        {Categories.map(cat => (
+                                            <option key={cat.key} value={cat.value}>
+                                                {cat.value}
                                             </option>
                                         ))}
                                     </select>
@@ -152,9 +152,9 @@ function UploadProductPage(props) {
                                 <div className="col-md-6">
                                     <label>Product Size : </label>
                                     <select className="form-control" onChange={onSizeChange}>
-                                        {Sizes.map(item => (
-                                            <option key={item.key} value={item.value}>
-                                                {item.value}
+                                        {Sizes.map(size => (
+                                            <option key={size.key} value={size.value}>
+                                                {size.value}
                                             </option>
                                         ))}
                                     </select>

@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const discountSchema = new Schema({
-    discountType: {
+    discountCouponName: {
         type: String,
         required: true,
         trim: true,
@@ -19,28 +19,11 @@ const discountSchema = new Schema({
         required: true,
         min: 1
     },
-    discountCoupon: {
-        type: String,
-        required: true,
+    discountProductId: {
+        type : String,
+        required : true,
         trim: true,
-        minlength: 3
     },
-    discountProductCategory: {
-        type: String,
-        required: true,
-        trim: true,
-        minlength: 3,
-        maxlength: 30
-    },
-    discountProducts :[
-        {
-            productID :  {
-                type : String,
-                required : true,
-                trim: true,
-            }
-        }
-    ],
     discountRemarks: {
         type : String,
         default: "",

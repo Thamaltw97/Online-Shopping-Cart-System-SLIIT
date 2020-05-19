@@ -25,13 +25,8 @@ class Navigation extends Component{
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/cart">
-                            {/*Shopping Cart*/}<i className="fa fa-shopping-cart" aria-hidden="true"></i>
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/wishlist/wishlist">
-                            {/*Wishlist*/}<i className="fa fa-heart" aria-hidden="true"></i>
+                        <Link className="nav-link" to="/admin">
+                            Admin Dashboard
                         </Link>
                     </li>
                     <Link className="nav-link" to="/" onClick={this.btnLogOut}>
