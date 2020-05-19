@@ -24,16 +24,6 @@ class Navigation extends Component{
                             Home
                         </Link>
                     </li>
-                    {/*<li className="nav-item">*/}
-                    {/*    <Link className="nav-link" to="/register">*/}
-                    {/*        SignUp*/}
-                    {/*    </Link>*/}
-                    {/*</li>*/}
-                    {/*<li className="nav-item">*/}
-                    {/*    <Link className="nav-link" to="/login">*/}
-                    {/*        SignIn*/}
-                    {/*    </Link>*/}
-                    {/*</li>*/}
                     <li className="nav-item">
                         <Link className="nav-link" to="/cart">
                             {/*Shopping Cart*/}<i className="fa fa-shopping-cart" aria-hidden="true"></i>

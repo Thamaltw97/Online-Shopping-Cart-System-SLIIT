@@ -25,6 +25,7 @@ mongoose
 //Import routers from routes directory
 const productsRouter = require('./routes/ProductRoutes');
 const discountsRouter = require('./routes/DiscountRoutes');
+const categoryRouter = require('./routes/CategoryRoutes');
 const wishlistsRouter = require('./routes/WishListRoutes');
 const userRouter = require('./routes/UserRoutes');
 const cartRouter = require('./routes/CartRoutes');
@@ -33,6 +34,7 @@ const commentsRouter = require('./routes/CommentRoutes');
 //Use routers
 app.use('/api/products', productsRouter);
 app.use('/api/discounts', discountsRouter);
+app.use('/api/categories', categoryRouter);
 app.use('/api/wishlists',wishlistsRouter);
 app.use('/api/users',userRouter);
 app.use('/api/cart',cartRouter);

@@ -5,10 +5,18 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navigation from "./components/Shared/Navigation";
 import UploadProduct from './components/Product/UploadProduct';
 import HomePage from './components/Home/HomePage';
+
+import AddStoreManagerPage from "./components/Admin/AddStoreManager";
+import AddCategoryPage from "./components/Admin/AddCategory";
+import CategoriesHome from "./components/Admin/CategoriesHome";
+import EditCategory from "./components/Admin/EditCategory";
+import AdministratorHome from "./components/Admin/AdministratorHome";
+import StoreManagerHome from "./components/Admin/StoreManagerHome";
+import EditStoreManager from "./components/Admin/EditStoreManager";
+
 import GuestPage from './components/Home/GuestPage';
 import  WishlistPage from './components/WishList/wishlistPage';
 import  CartPage from './components/Cart/cartPage'
-//import DeleteWishlist from "./components/WishList/DeleteWishlist";
 import StoreManagerDashboard from "./components/Product/StoreManagerDashboard";
 import EditProduct from "./components/Product/EditProduct";
 import DetailProduct from "./components/Product/ProductDetailPage/DetailProduct";
@@ -21,6 +29,7 @@ import GuestNav from "./components/Shared/GuestNav";
 import AdminNav from "./components/Shared/AdminNav";
 import StoreManagerNav from "./components/Shared/StoreManagerNav";
 import ViewComments from "./components/Comment/ViewComments";
+
 
 function App(props) {
 
@@ -76,6 +85,14 @@ function App(props) {
                         {/*<div style={{ paddingTop: '75px', minHeight: 'calc(100vh - 80px)' }}>*/}
                         <div>
                             <Switch>
+      
+                                <Route path="/admin/storeManagerHome/edit/:id" component={EditStoreManager}/>
+                                <Route path="/admin/categoryHome/edit/:id" component={EditCategory}/>
+                                <Route path="/admin/categoryHome/upload" component={AddCategoryPage}/>
+                                <Route path="/admin/categoryHome" component= {CategoriesHome} />
+                                <Route path="/admin/storeManagerHome/upload" component={AddStoreManagerPage}/>
+                                <Route path="/admin/storeManagerHome" component= {StoreManagerHome} />
+                                <Route path="/admin" component={AdministratorHome} />
                                 <Route path="/product/discount" component={DiscountPanel} />
                                 <Route path="/discount/edit/:id" component={EditDiscount} />
                                 <Route path="/product/adddiscount/:id" component={AddDiscount} />
