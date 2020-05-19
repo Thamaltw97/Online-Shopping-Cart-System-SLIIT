@@ -13,20 +13,16 @@ router.route('/').get((req, res) => {
 router.route('/add').post((req, res) => {
     const productName = req.body.productName;
     const productDesc = req.body.productDesc;
-    //const productBrand = req.body.productBrand;
     const productColour = req.body.productColour;
     const productSize = req.body.productSize;
-    //const productQuantity = req.body.productQuantity;
     const productUnitPrice = req.body.productUnitPrice;
     const wishUserId = req.body.wishUserId;
 
     const newItem = new WishlistItems({
         productName,
         productDesc,
-        //productBrand,
         productColour,
         productSize,
-        //productQuantity,
         productUnitPrice,
         wishUserId
     });

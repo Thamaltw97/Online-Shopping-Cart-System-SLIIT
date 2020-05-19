@@ -12,15 +12,20 @@ function ProductInfo(props){
     const [booVal, setBooVal] = useState(false);
     const [QuantityValue, setQuantityValue] = useState("");
     const [TotalValue, setTotalValue] = useState("");
+    const [CommentValue, setCommentValue] = useState("");
+    const [SuggestionsValue, setSuggestionsValue] = useState("");
+
+    const onRemarksChange = (e) => {
+        setCommentValue(e.currentTarget.value);
+    };
+
+    const onSuggestionsChange = (e) => {
+        setSuggestionsValue(e.currentTarget.value);
+    };
 
     const onQuantityChange = (e) => {
         setQuantityValue(e.currentTarget.value);
     };
-
-
-
-
-
 
     useEffect(() => {
         setProduct(props.detail)
@@ -58,21 +63,21 @@ function ProductInfo(props){
         }
     };
 
-
-
-
-
-
     const btnSCart = (e) => {
         //Enter code for adding item to shopping cart (Should pass user id and product id)
 
         e.preventDefault();
+        let total = 0;
+        if (booVal){
+            total = PrintAmount * parseFloat(QuantityValue);
+            //console.log(PrintAmount)
+        } else {
+            total = parseFloat(Product.productUnitPrice) * parseFloat(QuantityValue);
+        }
 
-        let total = parseFloat(Product.productUnitPrice) * parseFloat(QuantityValue);
         setTotalValue(total);
         // console.log(total);
 
-        
         const cartObj = {
             productName: Product.productName,
             productDesc: Product.productDesc,
@@ -87,18 +92,12 @@ function ProductInfo(props){
         Axios.post('http://localhost:5000/api/cart/add', cartObj)
             .then(res => {
                 alert(res.data);
-
+                setQuantityValue('');
             })
             .catch(err => {
                 alert('Error: ' + err);
             });
     };
-
-
-
-
-
-
 
     const btnWishList = (e) => {
         e.preventDefault();
@@ -122,13 +121,35 @@ function ProductInfo(props){
             });
     };
 
-    const btnAddComment = (e) => {
+    const onSubmitComment = (e) => {
         //Enter code to add comment (Should pass product id and user id)
+
+        e.preventDefault();
+
+        if(!CommentValue) {
+            return alert('Fill Comment section to submit !');
+        }
+
+        const commentObj = {
+            comment: CommentValue,
+            suggestions: SuggestionsValue,
+            productId: Product._id,
+            userId: localStorage.getItem('user-id')
+        };
+
+        Axios.post('http://localhost:5000/api/comments/add', commentObj)
+            .then(res => {
+                alert(res.data);
+                setCommentValue('');
+                setSuggestionsValue('');
+
+            })
+            .catch(err => {
+                alert('Error from client: ' + err);
+            });
+
     };
 
-    // const nextCommentPath = () => {
-    //     //props.history.push('/comment/view');
-    // };
 
     return (
         <div>
@@ -181,22 +202,65 @@ function ProductInfo(props){
                         <div className="col-md-6">
                             <div style={{display: 'flex', justifyContent: 'center'}}>
                                 <Button size="large" shape="round" type="danger"
-                                        onClick={btnAddComment}
+                                        //onClick={btnAddComment}
+                                        data-toggle="modal" data-target="#myModal"
                                 >
                                     Add My Comment
                                 </Button>
                             </div>
                         </div>
-                        {/*<div className="col-md-6">*/}
-                        {/*    <div style={{display: 'flex', justifyContent: 'center'}}>*/}
-                        {/*        <Button size="large" shape="round" type="primary"*/}
-                        {/*                onClick={nextCommentPath('/comment/view')}*/}
-                        {/*        >*/}
-                        {/*            View all comments*/}
-                        {/*        </Button>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
                     </div>
+
+
+                    <div className="modal fade" id="myModal" role="dialog">
+                        <div className="modal-dialog modal-lg">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h4 className="modal-title">Add Comment</h4>
+                                    <button type="button" className="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div className="modal-body">
+                                    <div className="row">
+                                        <div className="col-md-1"></div>
+                                        <div className="col-md-10">
+                                            <label>Comment : </label>
+                                            <textarea id="comment" className="form-control"
+                                                      maxLength="200"
+                                                      placeholder="Enter comment"
+                                                      onChange={onRemarksChange}
+                                                      value={CommentValue}
+                                            />
+                                            <br />
+                                            <label>Suggestions : </label>
+                                            <textarea id="suggestions" className="form-control"
+                                                      maxLength="200"
+                                                      placeholder="Enter your suggestions"
+                                                      onChange={onSuggestionsChange}
+                                                      value={SuggestionsValue}
+                                            />
+                                            <br />
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-md-2"></div>
+                                        <div className="col-md-8">
+                                            <button type="submit" className="btn btn-block btn-success mt-3"
+                                                    id="btnSubmitComment"
+                                                    onClick={onSubmitComment}
+                                            >Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-default btn-danger" data-dismiss="modal">
+                                        Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
                 : null
             }

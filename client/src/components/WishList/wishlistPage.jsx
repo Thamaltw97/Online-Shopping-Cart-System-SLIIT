@@ -11,7 +11,17 @@ const Item = props => (
         <td>{props.item.productSize}</td>
         <td>{props.item.productUnitPrice}</td>
         <td>
-            <Link to={"/WishList/delete/"+props.item._id}>Delete</Link>
+            <button type="submit" className="btn btn-block btn-danger mt-3" id="btnDelete"
+                    onClick={() =>
+                        Axios.delete('http://localhost:5000/api/wishlists/delete/' + props.item._id)
+                            .then(res => {
+                                    alert(res.data);
+                                    //this.props.history.push('/wishlist/wishlist');
+                            })
+                            .catch(err => {
+                                console.log('Error from client: ' + err)
+                            })
+                    }>Delete</button>
         </td>
     </tr>
 );
@@ -27,6 +37,17 @@ export default class WishList extends Component{
     }
 
     componentDidMount() {
+        Axios.get('http://localhost:5000/api/wishlists/wishlistbyuser/' + localStorage.getItem('user-id'))
+            .then(response => {
+                this.setState({items: response.data.wishlist});
+                //console.log(this.state.items)
+            })
+            .catch(function (err) {
+                console.log(err);
+            })
+    }
+
+    componentDidUpdate() {
         Axios.get('http://localhost:5000/api/wishlists/wishlistbyuser/' + localStorage.getItem('user-id'))
             .then(response => {
                 this.setState({items: response.data.wishlist});
