@@ -63,7 +63,7 @@ function Login(props) {
                 //console.log(res.data.user.id)
                 localStorage.setItem('auth-token', res.data.token);
                 localStorage.setItem('user-id', res.data.user.id);
-                localStorage.setItem('user-role', res.data.user.userType);
+                localStorage.setItem('user-role', res.data.user.userRole);
                 alert("Successfully Logged in");
                 props.history.push('/home');
 

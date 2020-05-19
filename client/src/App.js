@@ -6,7 +6,8 @@ import Navigation from "./components/Shared/Navigation";
 import UploadProduct from './components/Product/UploadProduct';
 import HomePage from './components/Home/HomePage';
 import GuestPage from './components/Home/GuestPage';
-import  WishlistPage from './components/WishList/wishlistPage'
+import  WishlistPage from './components/WishList/wishlistPage';
+import  CartPage from './components/Cart/cartPage'
 //import DeleteWishlist from "./components/WishList/DeleteWishlist";
 import StoreManagerDashboard from "./components/Product/StoreManagerDashboard";
 import EditProduct from "./components/Product/EditProduct";
@@ -88,6 +89,7 @@ function App(props) {
                                 <Route exact path="/home" component={() => checkLogin("/home")}/>
                                 <Route path="/register" component={Register} />
                                 <Route path="/login" component={Login} />
+                                <Route path="/cart" component={CartPage}/>
 
                             </Switch>
                         </div>

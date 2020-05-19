@@ -10,6 +10,17 @@ function ProductInfo(props){
     const [Product, setProduct] = useState([]);
     const [PrintAmount, setPrintAmount] = useState(0);
     const [booVal, setBooVal] = useState(false);
+    const [QuantityValue, setQuantityValue] = useState("");
+    const [TotalValue, setTotalValue] = useState("");
+
+    const onQuantityChange = (e) => {
+        setQuantityValue(e.currentTarget.value);
+    };
+
+
+
+
+
 
     useEffect(() => {
         setProduct(props.detail)
@@ -47,13 +58,51 @@ function ProductInfo(props){
         }
     };
 
+
+
+
+
+
     const btnSCart = (e) => {
         //Enter code for adding item to shopping cart (Should pass user id and product id)
+
+        e.preventDefault();
+
+        let total = parseFloat(Product.productUnitPrice) * parseFloat(QuantityValue);
+        setTotalValue(total);
+        // console.log(total);
+
+        
+        const cartObj = {
+            productName: Product.productName,
+            productDesc: Product.productDesc,
+            productSize: Product.productSize,
+            productColour: Product.productColour,
+            productUnitPrice: Product.productUnitPrice,
+            quantity: QuantityValue,
+            totalPrice: total,
+            cartUserId: localStorage.getItem('user-id')
+        };
+
+        Axios.post('http://localhost:5000/api/cart/add', cartObj)
+            .then(res => {
+                alert(res.data);
+
+            })
+            .catch(err => {
+                alert('Error: ' + err);
+            });
     };
+
+
+
+
+
+
 
     const btnWishList = (e) => {
         e.preventDefault();
-
+//let x = parseFloat(Product.productUnitPrice) * parseFloat('textbox value');
         const wishListObj = {
             productName: Product.productName,
             productDesc: Product.productDesc,
@@ -102,6 +151,13 @@ function ProductInfo(props){
                 <div>
                     <div className="row">
                         <div className="col-md-6">
+
+                            <label>Quantity : </label>
+                            <input id="quantity" type="text" className="form-control "
+                                   maxLength="50"
+                                   placeholder="Item Quantity"
+                                   onChange={onQuantityChange}
+                                   value={QuantityValue} />
                             <div style={{display: 'flex', justifyContent: 'center'}}>
                                 <Button size="large" shape="round" type="danger"
                                         onClick={btnSCart}
