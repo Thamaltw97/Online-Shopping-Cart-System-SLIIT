@@ -22,11 +22,6 @@ class Navigation extends Component{
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/storeManager/upload">
-                            Store Manager
-                        </Link>
-                    </li>
-                    <li className="nav-item">
                         <Link className="nav-link" to="/admin">
                             Admin Dashboard
                         </Link>

@@ -29,12 +29,11 @@ function AddCategoryPage(props) {
         Axios.post('http://localhost:5000/api/categories/add', categoryObj)
             .then(res => {
                 alert(res.data);
-                props.history.push('/category/upload');
+                props.history.push('/admin/categoryHome');
             })
             .catch(err => {
                 alert('Error from client: ' + err);
             });
-
     };
 
     return(
@@ -53,12 +52,13 @@ function AddCategoryPage(props) {
                                    onChange={onCategoryNameValueChange}
                                    value={categoryNameValue}/>
                             <br/>
-                            <label>Category Desc : </label>
+                            <label>Category Description : </label>
                             <input id="categoryDesc" type="text" className="form-control"
                                    maxLength="30"
                                    onChange={onCategoryDescValueChange}
                                    value={categoryDescValue}/>
                             <br/>
+                        </div>
                         </div>
                         <div className="row">
                             <div className="col-md-2"></div>
@@ -68,7 +68,6 @@ function AddCategoryPage(props) {
                                         onClick={onSubmit}
                                 >Submit</button>
                             </div>
-                        </div>
                     </div>
                 </form>
             </div>

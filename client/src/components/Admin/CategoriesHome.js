@@ -2,21 +2,17 @@ import React, { Component } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
 
-const Category  = props => (
+const Category = props => (
     <tr>
         <td>{props.category.categoryName}</td>
         <td>{props.category.categoryDesc}</td>
         <td>
-            <Link to={"/category/edit/"+props.category._id}>Edit</Link>
+            <Link to={"/admin/categoryHome/edit/"+props.category._id}>Edit</Link>
         </td>
-        {/*<td>*/}
-        {/*    /!*<Link to={"/category/delete/"+props.category._id}>Delete</Link>*!/*/}
-        {/*    <button type="submit" onClick={this.testDelete(props.category._id)} >Delete</button>*/}
-        {/*</td>*/}
     </tr>
 );
 
-class AdDashboard extends Component{
+class CategoriesHome extends Component{
 
     constructor(props) {
         super(props);
@@ -46,19 +42,6 @@ class AdDashboard extends Component{
             })
     }
 
-    // testDelete(e){
-    //      e.preventDefault();
-    //     Axios.delete('http://localhost:5000/api/categories/delete/' + x)
-    //         .then(res => {
-    //                 //alert(res.data);
-    //                 console.log(res.data)
-    //         })
-    //         .catch(err => {
-    //             console.log('Error from client: ' + err)
-    //         });
-    //     this.props.history.push('/admin');
-    // }
-
     categoryList() {
         return this.state.categories.map(function(currentCategory, index){
             return <Category category={currentCategory} key={index} />
@@ -66,7 +49,7 @@ class AdDashboard extends Component{
     }
 
     nextAddNewCategory() {
-        this.props.history.push('/category/upload');
+        this.props.history.push('/admin/categoryHome/upload');
     }
 
     render() {
@@ -75,7 +58,7 @@ class AdDashboard extends Component{
             <>
                 <div style={{ width: '75%', margin: '3rem auto' }}>
                     <div style={{ textAlign: 'center' }}>
-                        <h2>Administrator Dashboard  <span className="fas fa-air-freshener"></span></h2>
+                        <h2>Manage Categories  <span className="fas fa-air-freshener"></span></h2>
                     </div>
                     <br />
                     <br />
@@ -85,7 +68,7 @@ class AdDashboard extends Component{
                         </div>
                         <div className="col-md-5"><p> </p></div>
                         <div className="col-md-4">
-                            <button className="btn" id="btnAddNewCategory" onClick={() => this.nextAddNewCategory('/category/upload')}><i className="fa fa-plus"></i> Add New Category</button>
+                            <button className="btn" id="btnAddNewCategory" onClick={() => this.nextAddNewCategory('/admin/categoryHome/upload')}><i className="fa fa-plus"></i> Add New Category</button>
                             <span>  </span>
                         </div>
                     </div>
@@ -107,4 +90,4 @@ class AdDashboard extends Component{
         )
     }
 }
-export default AdDashboard;
+export default CategoriesHome;

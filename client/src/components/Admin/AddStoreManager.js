@@ -3,53 +3,54 @@ import Axios from "axios";
 
 function AddStoreManagerPage(props) {
 
-    const [smFNameValue, setSMFNameValue] = useState("");
-    const [smLNameValue, setSMLNameValue] = useState("");
+    const [smNameValue, setSMNameValue] = useState("");
     const [smEmailValue, setSMEmailValue] = useState("");
-    const [smPhoneNoValue, setSMPhoneNoValue] = useState("");
     const [smPasswordValue, setSMPasswordValue] = useState("");
+    const [smPasswordCheckValue, setSMPasswordCheckValue] = useState("");
 
-    const onsmFNameChange = (e) => {
-        setSMFNameValue(e.currentTarget.value);
-    };
-    const onsmLNameChange = (e) => {
-        setSMLNameValue(e.currentTarget.value);
+    const onsmNameChange = (e) => {
+        setSMNameValue(e.currentTarget.value);
     };
     const onsmEmailChange = (e) => {
         setSMEmailValue(e.currentTarget.value);
     };
-    const onsmPhoneNoChange = (e) => {
-        setSMPhoneNoValue(e.currentTarget.value);
-    };
     const onsmPasswordChange = (e) => {
         setSMPasswordValue(e.currentTarget.value);
+    };
+    const onsmPasswordCheckChange = (e) => {
+        setSMPasswordCheckValue(e.currentTarget.value);
     };
     const onSubmit = (e) => {
         e.preventDefault();
 
-        if (!smFNameValue || !smLNameValue || !smEmailValue || !smPhoneNoValue || !smPasswordValue) {
+        if (!smNameValue || !smEmailValue || !smPasswordValue || !smPasswordCheckValue) {
             return alert('Fill all the relevant fields first !');
+        }
+        if (smPasswordValue.length < 5) {
+            return alert("Password needs to be at least 5 character long");
+        }
+        if (smPasswordValue !== smPasswordCheckValue){
+            return alert('Enter the same password !');
         }
 
         const storeManagerObj = {
-            smFName: smFNameValue,
-            smLName: smLNameValue,
-            smEmail: smEmailValue,
-            smPhoneNo: smPhoneNoValue,
-            smPassword: smPasswordValue,
+            email: smEmailValue,
+            password: smPasswordValue,
+            passwordCheck: smPasswordCheckValue,
+            displayName: smNameValue,
+            userRole: 'storeManager'
         };
 
         console.log(storeManagerObj)
 
-        Axios.post('http://localhost:5000/api/storemanagers/add', storeManagerObj)
+        Axios.post('http://localhost:5000/api/users/register', storeManagerObj)
             .then(res => {
-                alert(res.data);
-                props.history.push('/storeManager/upload');
+                alert('Successfully added to Store Managers');
+                props.history.push('/admin/storeManagerHome');
             })
             .catch(err => {
                 alert('Error from client: ' + err);
             });
-
     };
 
     return(
@@ -62,17 +63,11 @@ function AddStoreManagerPage(props) {
                             <h2 className="text-capitalize text-center mt-3 mb-2">Add Store Manager</h2>
                             <br/>
                             <br/>
-                            <label>First Name : </label>
-                            <input id="smFName" type="text" className="form-control text-capitalize"
+                            <label>Name : </label>
+                            <input id="smName" type="text" className="form-control text-capitalize"
                                    maxLength="30"
-                                   onChange={onsmFNameChange}
-                                   value={smFNameValue}/>
-                            <br/>
-                            <label>Last Name : </label>
-                            <input id="smLName" type="text" className="form-control text-capitalize"
-                                   maxLength="30"
-                                   onChange={onsmLNameChange}
-                                   value={smLNameValue}/>
+                                   onChange={onsmNameChange}
+                                   value={smNameValue}/>
                             <br/>
                             <label>Email Address : </label>
                             <input id="smEmail" type="text" className="form-control"
@@ -80,18 +75,19 @@ function AddStoreManagerPage(props) {
                                    onChange={onsmEmailChange}
                                    value={smEmailValue} />
                             <br />
-                            <label>Contact No : </label>
-                            <input id="smPhoneNo" type="text" className="form-control"
-                                   maxLength="10"
-                                   onChange={onsmPhoneNoChange}
-                                   value={smPhoneNoValue} />
-                            <br />
                             <label>Suggested Password: </label>
                             <input id="smPassword" type="password" className="form-control"
                                    maxLength="30"
                                    onChange={onsmPasswordChange}
                                    value={smPasswordValue} />
                             <br />
+                            <label>Confirm Suggested Password: </label>
+                            <input id="smPasswordCheck" type="password" className="form-control"
+                                   maxLength="30"
+                                   onChange={onsmPasswordCheckChange}
+                                   value={smPasswordCheckValue} />
+                            <br />
+                    </div>
                     </div>
                     <div className="row">
                         <div className="col-md-2"></div>
@@ -102,12 +98,10 @@ function AddStoreManagerPage(props) {
                             >Submit</button>
                         </div>
                     </div>
-                 </div>
                 </form>
             </div>
         </div>
     );
-
 }
 
 export default AddStoreManagerPage

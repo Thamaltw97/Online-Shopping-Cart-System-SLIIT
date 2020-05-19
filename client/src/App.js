@@ -5,9 +5,13 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navigation from "./components/Shared/Navigation";
 import UploadProduct from './components/Product/UploadProduct';
 import HomePage from './components/Home/HomePage';
-import AddStoreManagerPage from "./components/StoreManager/AddStoreManager";
-import AddCategoryPage from "./components/StoreManager/AddCategory";
-import AdDashboard from "./components/StoreManager/AdDashboard";
+import AddStoreManagerPage from "./components/Admin/AddStoreManager";
+import AddCategoryPage from "./components/Admin/AddCategory";
+import CategoriesHome from "./components/Admin/CategoriesHome";
+import EditCategory from "./components/Admin/EditCategory";
+import AdministratorHome from "./components/Admin/AdministratorHome";
+import StoreManagerHome from "./components/Admin/StoreManagerHome";
+import EditStoreManager from "./components/Admin/EditStoreManager";
 
 class App extends React.Component {
 
@@ -18,14 +22,17 @@ class App extends React.Component {
                 <div>
                     <Router>
                         <Navigation/>
-                        {/*<div style={{ paddingTop: '75px', minHeight: 'calc(100vh - 80px)' }}>*/}
                         <div>
                             <Switch>
+                                <Route path="/admin/storeManagerHome/edit/:id" component={EditStoreManager}/>
+                                <Route path="/admin/categoryHome/edit/:id" component={EditCategory}/>
+                                <Route path="/admin/categoryHome/upload" component={AddCategoryPage}/>
+                                <Route path="/admin/categoryHome" component= {CategoriesHome} />
+                                <Route path="/admin/storeManagerHome/upload" component={AddStoreManagerPage}/>
+                                <Route path="/admin/storeManagerHome" component= {StoreManagerHome} />
+                                <Route path="/admin" component={AdministratorHome} />
                                 <Route path="/product/upload" component={UploadProduct} />
-                                <Route path="/storeManager/upload" component={AddStoreManagerPage}/>
-                                <Route path="/category/upload" component={AddCategoryPage}/>
-                                <Route path="/admin" component= {AdDashboard} />
-                                <Route path="/" component={HomePage}/>
+                                <Route exact path="/" component={HomePage}/>
                             </Switch>
                         </div>
                     </Router>

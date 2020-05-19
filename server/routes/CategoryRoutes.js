@@ -38,7 +38,7 @@ router.route('/update/:id').put((req, res) => {
             category.categoryDesc = req.body.categoryDesc;
  
             category.save()
-                .then(() => res.json('Successfully Updated. (Category id: ' + req.params.id + ')'))
+                .then(() => res.json('Successfully Updated'))
                 .catch(err => res.status(400).json('Error: ' + err));
         })
         .catch(err => res.status(400).json('Error: ' + err));
@@ -47,7 +47,7 @@ router.route('/update/:id').put((req, res) => {
  //delete category
  router.route('/delete/:id').delete((req, res) => {
     Category.findByIdAndDelete(req.params.id)
-        .then(() => res.json('Successfully Deleted. (Category id: ' + req.params.id + ')'))
+        .then(() => res.json('Successfully Deleted'))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
