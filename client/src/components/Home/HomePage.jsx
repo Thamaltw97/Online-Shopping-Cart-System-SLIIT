@@ -6,6 +6,7 @@ import ImageSlider from "./ImageSlider";
 import React, {useEffect, useState} from "react";
 import Axios from "axios";
 import {Row, Col, Card} from "antd";
+import {Link} from "react-router-dom";
 const { Meta } = Card;
 
 
@@ -41,7 +42,7 @@ function HomePage() {
         return <Col lg={6} md={8} xs={24} key={index}>
             <Card
                 hoverable={true}
-                cover={<a href={`/product/${product._id}`}><ImageSlider images={product.productImages} /></a>}
+                cover={<Link to={`/product/${product._id}`}><ImageSlider images={product.productImages} /></Link>}
             >
 
                 <Meta
