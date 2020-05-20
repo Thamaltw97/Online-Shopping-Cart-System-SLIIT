@@ -15,7 +15,7 @@ function ProductInfo(props){
     const [CommentValue, setCommentValue] = useState("");
     const [SuggestionsValue, setSuggestionsValue] = useState("");
 
-    const onRemarksChange = (e) => {
+    const onCommentChange = (e) => {
         setCommentValue(e.currentTarget.value);
     };
 
@@ -227,7 +227,7 @@ function ProductInfo(props){
                                             <textarea id="comment" className="form-control"
                                                       maxLength="200"
                                                       placeholder="Enter comment"
-                                                      onChange={onRemarksChange}
+                                                      onChange={onCommentChange}
                                                       value={CommentValue}
                                             />
                                             <br />

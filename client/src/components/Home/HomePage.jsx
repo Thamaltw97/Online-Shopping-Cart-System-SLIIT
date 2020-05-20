@@ -2,6 +2,7 @@ import 'antd/es/card/style/index.css';
 import 'antd/es/col/style/css';
 import 'antd/es/row/style/css';
 import ImageSlider from "./ImageSlider";
+import RadioCategory from "./RadioCategory";
 //import ProductsById from "./Sections/ProductsById";
 import React, {useEffect, useState} from "react";
 import Axios from "axios";
@@ -62,10 +63,16 @@ function HomePage() {
             <div style={{ textAlign: 'center' }}>
                 <h2>Fashion At Your Fingertips <span className="fas fa-hat-cowboy"></span></h2>
             </div>
+            {/*<div style={{ textAlign: 'center' }}>*/}
+            {/*    <h2>Fashion At Your Fingertips 2</h2>*/}
+            {/*</div>*/}
 
             {/*<ProductsById*/}
             {/*    handleFilters={filters => handleFilters(filters, "categories")}*/}
             {/*/>*/}
+
+            <RadioCategory />
+
             <br />
             <div className="blink_me"><b>*View products to check amazing discounts*</b></div>
             <br />

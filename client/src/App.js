@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 //import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //import { library } from "@fortawesome/fontawesome-svg-core";
@@ -29,22 +29,14 @@ import GuestNav from "./components/Shared/GuestNav";
 import AdminNav from "./components/Shared/AdminNav";
 import StoreManagerNav from "./components/Shared/StoreManagerNav";
 import ViewComments from "./components/Comment/ViewComments";
+import EditComment from "./components/Comment/EditComment";
 
 
 function App(props) {
 
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         loggedNavStatus: false
-    //     }
-    // }
 
     let [loggedNavStatus, setLoggedNavStatus] = useState('user');
 
-    // useEffect(() => {
-    //
-    // },[]);
 
     const checkLogin = (component) => {
         if (component === "/") {
@@ -64,11 +56,6 @@ function App(props) {
             //props.history.push('/');
         }
 
-        // else if (component === "register") {
-        //     return <RegisterForm />;
-        // } else if (component === "admin") {
-        //     return <Admin />;
-        // }
     };
     console.log(loggedNavStatus);
   // render() {
@@ -98,7 +85,8 @@ function App(props) {
                                 <Route path="/product/adddiscount/:id" component={AddDiscount} />
                                 <Route path="/product/upload" component={UploadProduct} />
                                 <Route path="/WishList/wishlist" component={WishlistPage}/>
-                                <Route exact path="/comment/view" component={ViewComments} />
+                                <Route exact path="/comment/:id" component={ViewComments} />
+                                <Route path="/comment/edit/:id" component={EditComment} />
                                 <Route path="/product/storemanager" component={StoreManagerDashboard} />
                                 <Route path="/product/edit/:id" component={EditProduct} />
                                 <Route path="/product/:id" component={DetailProduct} />
