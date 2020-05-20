@@ -33,6 +33,7 @@ class StoreManagerDashboard extends Component{
         Axios.get('http://localhost:5000/api/products/')
             .then(response => {
                 this.setState({products: response.data.products});
+                console.log(this.state.products)
             })
             .catch(function (err) {
                 console.log(err);

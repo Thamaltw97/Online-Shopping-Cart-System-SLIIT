@@ -1,15 +1,15 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import ImgUpload from './ImageUpload';
 import './StylesProduct.css';
 import Axios from "axios";
 
-const Categories = [
-    { key: 6, value: "Men's wear" },
-    { key: 7, value: "Women's wear" },
-    { key: 8, value: "Kid's wear" },
-    { key: 9, value: "Accessories" },
-    { key: 10, value: "Shoes" }
-];
+// const Categories = [
+//     { key: 6, value: "Men's wear" },
+//     { key: 7, value: "Women's wear" },
+//     { key: 8, value: "Kid's wear" },
+//     { key: 9, value: "Accessories" },
+//     { key: 10, value: "Shoes" }
+// ];
 
 const Sizes = [
     { key: 1, value: "X-Small" },
@@ -23,7 +23,6 @@ function UploadProductPage(props) {
 
     const [NameValue, setNameValue] = useState("");
     const [DescValue, setDescValue] = useState("");
-    const [CategoryValue, setCategoryValue] = useState(0);
     const [BrandValue, setBrandValue] = useState("");
     const [ColourValue, setColourValue] = useState("");
     const [SizeValue, setSizeValue] = useState(0);
@@ -31,6 +30,8 @@ function UploadProductPage(props) {
     const [UPriceValue, setUPriceValue] = useState();
     const [RemarksValue, setRemarksValue] = useState("");
     const [Images, setImages] = useState([]);
+    const [CategoryValue, setCategoryValue] = useState('');
+    const [CategoriesValue, setCategoriesValue] = useState([]);
 
     const onNameChange = (e) => {
         setNameValue(e.currentTarget.value);
@@ -73,6 +74,23 @@ function UploadProductPage(props) {
         setImages(newImages);
     };
 
+    useEffect(() => {
+        Axios.get('http://localhost:5000/api/categories/')
+            .then(response => {
+                if (response.data.length > 0) {
+                    // this.setState({
+                    //     users: response.data.map(user => user.username),
+                    //     username: response.data[0].username
+                    // })
+                    setCategoriesValue(response.data.map(categories => categories.categoryName));
+                    setCategoryValue(response.data[0].categoryName);
+                    // console.log(response.data[0].categoryName);
+
+                }
+            })
+    },[]);
+    console.log(CategoryValue);
+    console.log(CategoriesValue);
     const onSubmit = (e) => {
         e.preventDefault();
 
@@ -141,12 +159,26 @@ function UploadProductPage(props) {
                             <div className="row">
                                 <div className="col-md-6">
                                     <label style={{ marginRight: '10px' }}>Product Category : </label>
-                                    <select className="form-control" onChange={onCategoryChange}>
-                                        {Categories.map(cat => (
-                                            <option key={cat.key} value={cat.value}>
-                                                {cat.value}
-                                            </option>
-                                        ))}
+                                    {/*<select className="form-control" onChange={onCategoryChange}>*/}
+                                    {/*    {Categories.map(cat => (*/}
+                                    {/*        <option key={cat.key} value={cat.value}>*/}
+                                    {/*            {cat.value}*/}
+                                    {/*        </option>*/}
+                                    {/*    ))}*/}
+                                    {/*</select>*/}
+                                    <select
+                                            required
+                                            className="form-control"
+                                            value={CategoryValue}
+                                            onChange={onCategoryChange}>
+                                        {
+                                            CategoriesValue.map(function(Category) {
+                                                return <option
+                                                    key={Category}
+                                                    value={Category}>{Category}
+                                                </option>;
+                                            })
+                                        }
                                     </select>
                                 </div>
                                 <div className="col-md-6">
