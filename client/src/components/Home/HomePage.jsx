@@ -14,9 +14,6 @@ const { Meta } = Card;
 function HomePage() {
 
     const [Products, setProducts] = useState([]);
-    // const [Filters, setFilters] = useState({
-    //     categories: []
-    // });
 
     useEffect(() => {
 
@@ -54,9 +51,48 @@ function HomePage() {
         </Col>
     });
 
-    // const handleFilters = (filters, categ) => {
-    //     console.log(filters)
-    // };
+
+    const handleFilters = (category) => {
+
+        // console.log(category);
+
+        if (category === 'Any'){
+            Axios.get('http://localhost:5000/api/products/')
+                .then(response => {
+                    if (response.data.success){
+
+                        setProducts(response.data.products);
+
+                        console.log(response.data.products);
+
+                    } else {
+                        alert('ERROR: ' + response.data.err + 'from server!')
+                    }
+                })
+                .catch(err => {
+                    console.log('Error' + err + 'from client!')
+                });
+        } else {
+            Axios.post('http://localhost:5000/api/products/categorywise/', {productCategory: category})
+                .then(response => {
+                    if (response.data.success){
+
+                        setProducts(response.data.products);
+
+                        console.log(response.data.products);
+
+                    } else {
+                        alert('ERROR: ' + response.data.err + 'from server!')
+                    }
+                })
+                .catch(err => {
+                    console.log('Error' + err + 'from client!')
+                });
+        }
+
+
+
+    };
 
     return(
         <div style={{ width: '75%', margin: '3rem auto' }}>
@@ -71,7 +107,7 @@ function HomePage() {
             {/*    handleFilters={filters => handleFilters(filters, "categories")}*/}
             {/*/>*/}
 
-            <RadioCategory />
+            <RadioCategory handleFilters={filters => handleFilters(filters)} />
 
             <br />
             <div className="blink_me"><b>*View products to check amazing discounts*</b></div>

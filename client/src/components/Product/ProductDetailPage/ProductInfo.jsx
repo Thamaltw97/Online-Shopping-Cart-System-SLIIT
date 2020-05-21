@@ -11,7 +11,7 @@ function ProductInfo(props){
     const [PrintAmount, setPrintAmount] = useState(0);
     const [booVal, setBooVal] = useState(false);
     const [QuantityValue, setQuantityValue] = useState("");
-    const [TotalValue, setTotalValue] = useState("");
+    //const [TotalValue, setTotalValue] = useState("");
     const [CommentValue, setCommentValue] = useState("");
     const [SuggestionsValue, setSuggestionsValue] = useState("");
 
@@ -75,7 +75,7 @@ function ProductInfo(props){
             total = parseFloat(Product.productUnitPrice) * parseFloat(QuantityValue);
         }
 
-        setTotalValue(total);
+        //setTotalValue(total);
         // console.log(total);
 
 

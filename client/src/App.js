@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 //import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //import { library } from "@fortawesome/fontawesome-svg-core";
@@ -36,6 +36,7 @@ function App(props) {
 
 
     let [loggedNavStatus, setLoggedNavStatus] = useState('user');
+
 
 
     const checkLogin = (component) => {

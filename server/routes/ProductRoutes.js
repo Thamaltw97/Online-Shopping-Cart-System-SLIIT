@@ -10,6 +10,13 @@ router.route('/').get((req, res) => {
         .catch(err => res.status(400).json({ success: false, err }));
 });
 
+//Get products by category
+router.route('/categorywise').post((req, res) => {
+    Product.find({"productCategory": req.body.productCategory})
+        .then(products => res.json({ success: true, products }))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
 
 //Add new product route
 router.route('/add').post((req, res) => {
