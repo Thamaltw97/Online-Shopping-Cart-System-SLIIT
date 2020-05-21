@@ -1,7 +1,6 @@
-import React, {Component, useState} from "react";
+import React, {Component} from "react";
 import Axios from "axios";
 import './cartPage.css'
-
 
 
 const Item = props => (
@@ -15,26 +14,21 @@ const Item = props => (
         <td>{props.item.totalPrice}</td>
         <td>
 
-            {/*<Link to={"/"+props.item._id}>*/}
-            {/*    <button className="btn btn-success button-checkout">CHECKOUT</button>*/}
-            {/*</Link>*/}
+        <button className="btn btn-danger" button type="submit" id="btnDelete"
+                onClick={() =>
+                    Axios.delete('http://localhost:5000/api/cart/delete/' + props.item._id)
+                        .then(res => {
+                            // alert(res.data);
+                            alert("Your Item has been Deleted!")
 
-            {/*<Link to={"/cart/delete/"+props.item._id}>*/}
-                {/*Delete*/}<button className="btn btn-danger" button type="submit" id="btnDelete"
-                                    onClick={() =>
-                                        Axios.delete('http://localhost:5000/api/cart/delete/' + props.item._id)
-                                            .then(res => {
-                                                // alert(res.data);
-                                                alert("Your Item has been Deleted!")
+                        })
+                        .catch(err => {
+                            console.log('Error from client: ' + err)
+                        })
+                }>
+        <i className="fa fa-trash" aria-hidden="true"></i>
+        </button>
 
-                                            })
-                                            .catch(err => {
-                                                console.log('Error from client: ' + err)
-                                            })
-                                    }>
-                <i className="fa fa-trash" aria-hidden="true"></i>
-                </button>
-            {/*</Link>*/}
         </td>
     </tr>
 );

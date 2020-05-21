@@ -1,19 +1,9 @@
-// import React from "react";
-//
-// export default function Register() {
-//     return(
-//         <div>
-//             Login
-//         </div>
-//     )
-// }
-
 import React, {useState} from "react";
 // import ImgUpload from './ImageUpload';
 // import './StylesProduct.css';
 import Axios from "axios";
-import { BrowserRouter as Route} from "react-router-dom";
-import Register from "./Register";
+// import { BrowserRouter as Route} from "react-router-dom";
+// import Register from "./Register";
 import './Login.css'
 
 
@@ -26,7 +16,7 @@ function Login(props) {
 
     const [EmailValue, setEmailValue] = useState("");
     const [PasswordValue, setPasswordValue] = useState("");
-    const [Token, setToken] = useState("");
+    //const [Token, setToken] = useState("");
 
 
     const onEmailChange = (e) => {
@@ -63,7 +53,7 @@ function Login(props) {
         Axios.post('http://localhost:5000/api/users/login', userObj)
             .then(res => {
                 //console.log(res.data);
-                setToken(res.data.token);
+                //setToken(res.data.token);
                 //console.log(res.data.token)
                 //console.log(res.data.user.id)
                 localStorage.setItem('auth-token', res.data.token);

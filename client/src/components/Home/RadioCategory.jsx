@@ -1,7 +1,7 @@
 import 'antd/es/collapse/style/index.css';
 import 'antd/es/radio/style/index.css';
-import React, {useEffect, useState} from "react";
-import Axios from "axios";
+import React, {useState} from "react";
+//import Axios from "axios";
 import {Collapse, Radio} from "antd";
 const { Panel } = Collapse;
 

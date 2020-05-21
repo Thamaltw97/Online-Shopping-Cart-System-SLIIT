@@ -1,20 +1,8 @@
-// import React from "react";
-//
-// export default function Register() {
-//     return(
-//         <div>
-//             Register
-//         </div>
-//     )
-// }
-
 import React, {useState} from "react";
 // import ImgUpload from './ImageUpload';
 // import './StylesProduct.css';
 import Axios from "axios";
 import './Register.css';
-
-
 
 
 function Register(props) {
@@ -57,7 +45,7 @@ function Register(props) {
             return alert('Please Check your password');
 
         if (!(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(EmailValue))){
-            return alert('Please Check you Email Adsress');
+            return alert('Please Check you Email Address');
         }
 
 
