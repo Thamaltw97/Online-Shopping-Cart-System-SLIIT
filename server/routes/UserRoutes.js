@@ -41,29 +41,34 @@ router.post("/register", async (req, res) => {
         const savedUser = await newUser.save();
         await res.json(savedUser);
 
-        let transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: 'stdsender2020@gmail.com',
-                pass: 'student321'
-            }
-        });
+        if (userRole === 'storeManager'){
 
-        let mailOptions = {
-            from: '"Online Fashion Stop" <OnlineFashionStop@gmail.com>',
-            to: `${email}`,
-            subject: 'Online Fashion Stop',
-            text: 'Your Store Manager account has been created.',
-            html: `<b>Welcome to Online Fashion Stop! </b><br/><br/><br/>Your Store Manager account has been created.<br/><br/>User email: ${email}<br/>Password: ${password}`,
-        };
+            let transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                    user: 'stdsender2020@gmail.com',
+                    pass: 'student321'
+                }
+            });
 
-        transporter.sendMail(mailOptions, function(error, info){
-            if (error) {
-                console.log(error);
-            } else {
-                console.log('Email sent: ' + info.response);
-            }
-        });
+            let mailOptions = {
+                from: '"Online Fashion Stop" <OnlineFashionStop@gmail.com>',
+                to: `${email}`,
+                subject: 'Online Fashion Stop',
+                text: 'Your Store Manager account has been created.',
+                html: `<b>Welcome to Online Fashion Stop! </b><br/><br/><br/>Your Store Manager account has been created.<br/><br/>User email: ${email}<br/>Password: ${password}`,
+            };
+
+            transporter.sendMail(mailOptions, function(error, info){
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log('Email sent: ' + info.response);
+                }
+            });
+
+        }
+
 
     }
     catch(err){

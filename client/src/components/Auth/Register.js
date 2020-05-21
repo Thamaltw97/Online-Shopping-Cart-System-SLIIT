@@ -3,6 +3,7 @@ import React, {useState} from "react";
 // import './StylesProduct.css';
 import Axios from "axios";
 import './Register.css';
+import { Link } from "react-router-dom";
 
 
 function Register(props) {
@@ -120,7 +121,7 @@ function Register(props) {
                                    onChange={onDisplayNameChange}
                                    value={DisplayNameValue} />
                             <br />
-                            <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                            <p>By creating an account you agree to our <Link>Terms & Privacy</Link>.</p>
 
 
                             <div className="row">

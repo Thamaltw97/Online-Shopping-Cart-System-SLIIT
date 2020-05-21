@@ -99,14 +99,9 @@ function HomePage() {
             <div style={{ textAlign: 'center' }}>
                 <h2>Fashion At Your Fingertips <span className="fas fa-hat-cowboy"></span></h2>
             </div>
-            {/*<div style={{ textAlign: 'center' }}>*/}
-            {/*    <h2>Fashion At Your Fingertips 2</h2>*/}
-            {/*</div>*/}
+            <br />
 
-            {/*<ProductsById*/}
-            {/*    handleFilters={filters => handleFilters(filters, "categories")}*/}
-            {/*/>*/}
-
+            {/*Radio buttons to get product by category*/}
             <RadioCategory handleFilters={filters => handleFilters(filters)} />
 
             <br />

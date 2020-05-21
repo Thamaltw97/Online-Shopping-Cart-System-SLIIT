@@ -13,9 +13,6 @@ const { Meta } = Card;
 function HomePage() {
 
     const [Products, setProducts] = useState([]);
-    // const [Filters, setFilters] = useState({
-    //     categories: []
-    // });
 
     useEffect(() => {
 
@@ -53,9 +50,6 @@ function HomePage() {
         </Col>
     });
 
-    // const handleFilters = (filters, categ) => {
-    //     console.log(filters)
-    // };
 
     return(
         <div style={{ width: '75%', margin: '3rem auto' }}>
@@ -63,14 +57,8 @@ function HomePage() {
                 <h2>Fashion At Your Fingertips <span className="fas fa-hat-cowboy"></span></h2>
             </div>
 
-            {/*<ProductsById*/}
-            {/*    handleFilters={filters => handleFilters(filters, "categories")}*/}
-            {/*/>*/}
-
-            {/*<RadioCategory />*/}
-
             <br />
-            <div className="blink_me"><b>*View products to check amazing discounts*</b></div>
+            <div className="blink_me"><b>*Sign in and get amazing discounts*</b></div>
             <br />
             {Products.length === 0 ?
                 <div style={{ display: 'flex', height: '300px', justifyContent: 'center', alignItems: 'center' }}>
