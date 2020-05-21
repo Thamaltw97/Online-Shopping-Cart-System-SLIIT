@@ -2,20 +2,28 @@ const router = require('express').Router();
 let Comment = require('../models/CommentModel');
 
 
-//Get all comments by product id route
+//Get comment by id
 router.route('/:id').get((req, res) => {
     Comment.findById(req.params.id)
-        .then(comment => res.json({ success: true, comment }))
+        .then(comments => res.json({ success: true, comments }))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
+
+//Get all comments by product id route
+router.route('/allcomments/:id').get((req, res) => {
+    Comment.find({"productId": req.params.id})
+        .then(comments => res.json({ success: true, comments }))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
 //Get comments by both user id and product id route
 //to show only user's comment
-// router.route('/:id').get((req, res) => {
-//     Product.findById(req.params.id)
-//         .then(product => res.json({ success: true, product }))
-//         .catch(err => res.status(400).json('Error: ' + err));
-// });
+router.route('/mycomments/:id').post((req, res) => {
+    Comment.find({"productId": req.params.id, "userId": req.body.userId})
+        .then(comments => res.json({ success: true, comments }))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
 
 //Add new comment route
 router.route('/add').post((req, res) => {
@@ -50,7 +58,7 @@ router.route('/update/:id').put((req, res) => {
                 .then(() => res.json({ success: true, successMsg }))
                 .catch(err => res.status(400).json({ success: false, err }));
         })
-        .catch(err => res.status(400).json('Error: ' + err));
+        .catch(err => res.status(400).json('Error from server: ' + err));
 });
 
 // Delete comment by user id route

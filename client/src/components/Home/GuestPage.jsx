@@ -2,6 +2,7 @@ import 'antd/es/card/style/index.css';
 import 'antd/es/col/style/css';
 import 'antd/es/row/style/css';
 import ImageSlider from "./ImageSlider";
+//import RadioCategory from "./RadioCategory";
 //import ProductsById from "./Sections/ProductsById";
 import React, {useEffect, useState} from "react";
 import Axios from "axios";
@@ -65,6 +66,9 @@ function HomePage() {
             {/*<ProductsById*/}
             {/*    handleFilters={filters => handleFilters(filters, "categories")}*/}
             {/*/>*/}
+
+            {/*<RadioCategory />*/}
+
             <br />
             <div className="blink_me"><b>*View products to check amazing discounts*</b></div>
             <br />

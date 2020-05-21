@@ -13,7 +13,8 @@ class DetailProduct extends React.Component{
         super(props);
         this.state = {
             Product: [],
-            editModelShow: false
+            editModelShow: false,
+            productId: ''
         };
     }
 
@@ -46,7 +47,7 @@ class DetailProduct extends React.Component{
     }
 
     nextCommentPath (){
-        this.props.history.push('/comment/view');
+        this.props.history.push('/comment/' + this.state.productId);
     };
 
     render() {
@@ -68,7 +69,7 @@ class DetailProduct extends React.Component{
                         <div className="col-md-6">
                             <div style={{display: 'flex', justifyContent: 'center'}}>
                                 <Button size="large" shape="round" type="primary"
-                                        onClick={() => this.nextCommentPath('/comment/view')}
+                                        onClick={() => this.nextCommentPath('/comments/' + this.state.productId)}
                                 >
                                     View all comments
                                 </Button>
