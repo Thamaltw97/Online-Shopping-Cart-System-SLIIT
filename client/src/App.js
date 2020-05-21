@@ -39,9 +39,9 @@ function App(props) {
 
     useEffect(() => {
 
-        if (window.location.href === 'http://localhost:3000/login') {
+        if (window.location.href.match(/login.*/)) {
             setLoggedNavStatus('guest');
-        } else if (window.location.href === 'http://localhost:3000/register') {
+        } else if (window.location.href.match(/register.*/)) {
             setLoggedNavStatus('guest');
         } else if (window.location.href.match(/admin.*/)) {
             setLoggedNavStatus('admin');
