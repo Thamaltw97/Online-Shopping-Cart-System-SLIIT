@@ -37,7 +37,23 @@ function App(props) {
 
     let [loggedNavStatus, setLoggedNavStatus] = useState('user');
 
+    useEffect(() => {
 
+        if (window.location.href === 'http://localhost:3000/login') {
+            setLoggedNavStatus('guest');
+        } else if (window.location.href === 'http://localhost:3000/register') {
+            setLoggedNavStatus('guest');
+        } else if (window.location.href.match(/admin.*/)) {
+            setLoggedNavStatus('admin');
+        } else if (window.location.href.match(/storemanager.*/)) {
+            setLoggedNavStatus('storeManager');
+        } else if (window.location.href.match(/upload.*/)) {
+            setLoggedNavStatus('storeManager');
+        } else if (window.location.href.match(/discount.*/)) {
+            setLoggedNavStatus('storeManager');
+        }
+
+    },[]);
 
     const checkLogin = (component) => {
         if (component === "/") {
