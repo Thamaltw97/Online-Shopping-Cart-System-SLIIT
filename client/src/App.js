@@ -29,22 +29,18 @@ import GuestNav from "./components/Shared/GuestNav";
 import AdminNav from "./components/Shared/AdminNav";
 import StoreManagerNav from "./components/Shared/StoreManagerNav";
 import ViewComments from "./components/Comment/ViewComments";
+import Payment from "./components/Payment/paymentPage";
+
+
 
 
 function App(props) {
 
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         loggedNavStatus: false
-    //     }
-    // }
+
 
     let [loggedNavStatus, setLoggedNavStatus] = useState('user');
 
-    // useEffect(() => {
-    //
-    // },[]);
+
 
     const checkLogin = (component) => {
         if (component === "/") {
@@ -64,11 +60,7 @@ function App(props) {
             //props.history.push('/');
         }
 
-        // else if (component === "register") {
-        //     return <RegisterForm />;
-        // } else if (component === "admin") {
-        //     return <Admin />;
-        // }
+
     };
     console.log(loggedNavStatus);
   // render() {
@@ -76,7 +68,7 @@ function App(props) {
         <div>
             {(
                 <div>
-                    <Router>
+                    <Router >
                         {/*<Navigation/>*/}
                         {loggedNavStatus === 'guest' ? <GuestNav /> :
                             loggedNavStatus === 'admin' ? <AdminNav /> :
@@ -107,6 +99,7 @@ function App(props) {
                                 <Route path="/register" component={Register} />
                                 <Route path="/login" component={Login} />
                                 <Route path="/cart" component={CartPage}/>
+                                <Route path="/payment" component={Payment}/>
 
                             </Switch>
                         </div>

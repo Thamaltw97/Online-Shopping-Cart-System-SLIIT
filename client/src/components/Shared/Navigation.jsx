@@ -26,12 +26,12 @@ class Navigation extends Component{
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/cart">
-                            {/*Shopping Cart*/}<i className="fa fa-shopping-cart" aria-hidden="true"></i>
+                            {/*Shopping Cart*/}<i className="fa fa-shopping-cart" aria-hidden="true"/>
                         </Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/wishlist/wishlist">
-                            {/*Wishlist*/}<i className="fa fa-heart" aria-hidden="true"></i>
+                            {/*Wishlist*/}<i className="fa fa-heart" aria-hidden="true"/>
                         </Link>
                     </li>
                     <Link className="nav-link" to="/" onClick={this.btnLogOut}>

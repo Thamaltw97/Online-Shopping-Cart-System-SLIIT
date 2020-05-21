@@ -78,6 +78,7 @@ function ProductInfo(props){
         setTotalValue(total);
         // console.log(total);
 
+
         const cartObj = {
             productName: Product.productName,
             productDesc: Product.productDesc,
@@ -93,6 +94,7 @@ function ProductInfo(props){
             .then(res => {
                 alert(res.data);
                 setQuantityValue('');
+                // props.history.push('/cart');
             })
             .catch(err => {
                 alert('Error: ' + err);
@@ -176,14 +178,14 @@ function ProductInfo(props){
                             <label>Quantity : </label>
                             <input id="quantity" type="text" className="form-control "
                                    maxLength="50"
-                                   placeholder="Item Quantity"
+                                   placeholder="1"
                                    onChange={onQuantityChange}
                                    value={QuantityValue} />
                             <div style={{display: 'flex', justifyContent: 'center'}}>
                                 <Button size="large" shape="round" type="danger"
                                         onClick={btnSCart}
                                 >
-                                    Add to Cart
+                                    Add to Cart<i className="fa fa-shopping-cart" aria-hidden="true"/>
                                 </Button>
                             </div>
                         </div>
@@ -192,7 +194,7 @@ function ProductInfo(props){
                                 <Button size="large" shape="round" type="primary"
                                     onClick={btnWishList}
                                 >
-                                    Add to Wishlist
+                                    Add to Wishlist<i className="fa fa-heart" aria-hidden="true"/>
                                 </Button>
                             </div>
                         </div>

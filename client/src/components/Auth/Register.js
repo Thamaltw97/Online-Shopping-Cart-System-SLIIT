@@ -12,6 +12,7 @@ import React, {useState} from "react";
 // import ImgUpload from './ImageUpload';
 // import './StylesProduct.css';
 import Axios from "axios";
+import './Register.css';
 
 
 
@@ -49,16 +50,20 @@ function Register(props) {
         }
 
 
-        // if (PasswordValue.length < 5)
-        //     return alert('Password needs to be at least 5 character long');
-        //
-        // if (PasswordValue !== PasswordCheckValue)
-        //     return alert('Please Check your password');
+        if (PasswordValue.length < 5)
+            return alert('Password needs to be at least 5 character long');
+
+        if (PasswordValue !== PasswordCheckValue)
+            return alert('Please Check your password');
+
+        if (!(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(EmailValue))){
+            return alert('Please Check you Email Adsress');
+        }
 
 
 
 
-        const userObj = {
+            const userObj = {
             email: EmailValue,
             password: PasswordValue,
             passwordCheck: PasswordCheckValue,
@@ -83,27 +88,28 @@ function Register(props) {
 
     //render() {
     return (
-        <div className="container pt-3 mt-3 mb-5" >
-            <div className="card card-body my-0 bg-light">
+        <div className="container pt-3 mt-3 mb-5 " >
+            <div className="card card-body my-0 div-register">
                 <form onSubmit={onSubmit}>
 
                     <div className="row">
-                        <div className="col-md-2"></div>
+                        <div className="col-md-2"/>
                         <div className="col-md-8">
                             <h2 className="text-capitalize text-center mt-3 mb-2">Register</h2>
                             <br/>
+                            <p className="p-1">Please fill in this form to create an account.</p>
                             <br />
 
 
 
-                            <label>Your Email : </label>
-                            <input id="email" type="text" className="form-control "
+                            <label className="lable-form">Your Email : </label>
+                            <input id="email" type="email" className="form-control "
                                    maxLength="50"
                                    placeholder="Enter your Email"
                                    onChange={onEmailChange}
                                    value={EmailValue} />
                             <br/>
-                            <label>Password : </label>
+                            <label className="lable-form">Password : </label>
                             <input id="password" type="password" className="form-control "
                                    maxLength="20"
                                    placeholder="Enter Password"
@@ -111,7 +117,7 @@ function Register(props) {
                                    value={PasswordValue} />
                             <br />
 
-                            <label>Confirm Password : </label>
+                            <label className="lable-form">Confirm Password : </label>
                             <input id="passwordCheck" type="password" className="form-control "
                                    maxLength="20"
                                    placeholder="Re-Enter Password"
@@ -119,22 +125,23 @@ function Register(props) {
                                    value={PasswordCheckValue} />
                             <br />
 
-                            <label>Your Name : </label>
+                            <label className="lable-form">Your Name : </label>
                             <input id="displayName" type="text" className="form-control text-capitalize"
                                    maxLength="30"
                                    placeholder="Enter your Name"
                                    onChange={onDisplayNameChange}
                                    value={DisplayNameValue} />
                             <br />
+                            <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 
 
                             <div className="row">
-                                <div className="col-md-2"></div>
+                                <div className="col-md-2"/>
                                 <div className="col-md-8">
-                                    <button type="submit" className="btn btn-block btn-primary mt-3"
+                                    <button type="submit" className="btn btn-block btn-primary mt-3 btn-signup"
                                             id="btnSubmit"
                                             onClick={onSubmit}
-                                    >Submit</button>
+                                    >REGISTER NOW</button>
                                 </div>
                             </div>
                         </div>

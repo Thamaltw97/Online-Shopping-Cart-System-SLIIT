@@ -30,6 +30,7 @@ const wishlistsRouter = require('./routes/WishListRoutes');
 const userRouter = require('./routes/UserRoutes');
 const cartRouter = require('./routes/CartRoutes');
 const commentsRouter = require('./routes/CommentRoutes');
+const paymentRouter = require('./routes/PaymentRoutes');
 
 //Use routers
 app.use('/api/products', productsRouter);
@@ -39,6 +40,7 @@ app.use('/api/wishlists',wishlistsRouter);
 app.use('/api/users',userRouter);
 app.use('/api/cart',cartRouter);
 app.use('/api/comments',commentsRouter);
+app.use('/api/payments',paymentRouter);
 
 app.use('/uploads', express.static('uploads'));
 
