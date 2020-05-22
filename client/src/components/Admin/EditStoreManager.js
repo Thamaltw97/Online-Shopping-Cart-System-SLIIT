@@ -1,5 +1,6 @@
+
 import React, {Component} from "react";
-import Axios from "axios";
+import Axios from "axios"
 
 class EditStoreManager extends Component{
 
@@ -119,7 +120,7 @@ class EditStoreManager extends Component{
                             <div className="row">
                                 <div className="col-md-2"></div>
                                 <div className="col-md-8">
-                                    <h2 className="text-capitalize text-center mt-3 mb-2">Edit Store Manager</h2>
+                                    <h2 className="text-capitalize text-center mt-3 mb-2">Edit Store Manager <span className= "fa fa-pencil-square-o"></span></h2>
                                     <br/>
                                     <br/>
                                     <label>Name : </label>
@@ -133,18 +134,6 @@ class EditStoreManager extends Component{
                                            maxLength="100"
                                            onChange={this.onSMEmailChange}
                                            value={this.state.smEmail} />
-                                    <br />
-                                    <label>Suggested Password: </label>
-                                    <input id="smPassword" type="password" className="form-control"
-                                           maxLength="30"
-                                           onChange={this.onSMPasswordChange}
-                                           value={this.state.smPassword} />
-                                    <br />
-                                    <label>Confirm Suggested Password: </label>
-                                    <input id="smPasswordCheck" type="password" className="form-control"
-                                           maxLength="30"
-                                           onChange={this.onSMPasswordCheckChange}
-                                           value={this.state.smPasswordCheck} />
                                     <br />
                                 </div>
                             </div>

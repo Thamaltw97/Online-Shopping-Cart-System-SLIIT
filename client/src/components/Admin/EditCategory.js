@@ -80,7 +80,6 @@ class EditCategory extends Component{
         this.props.history.push('/admin/categoryHome');
     }
 
-
     render() {
         return (
             <>
@@ -90,7 +89,7 @@ class EditCategory extends Component{
                             <div className="row">
                                 <div className="col-md-2"></div>
                                 <div className="col-md-8">
-                                    <h2 className="text-capitalize text-center mt-3 mb-2">Edit Store Manager</h2>
+                                    <h2 className="text-capitalize text-center mt-3 mb-2">Edit Store Manager <span className= "fa fa-pencil-square-o"></span></h2>
                                     <br/>
                                     <br />
                                     <label>Category Name : </label>
@@ -119,8 +118,9 @@ class EditCategory extends Component{
                                 <div className="col-md-4">
                                     <button type="submit" className="btn btn-block btn-danger mt-3"
                                             id="btnDelete"
-                                            onClick={this.onDelete.bind(this.state.categoryId)}
-                                    >Delete</button>
+                                            onClick={this.onDelete.bind(this.state.categoryId)}>
+                                        Delete
+                                    </button>
                                 </div>
                             </div>
                         </form>

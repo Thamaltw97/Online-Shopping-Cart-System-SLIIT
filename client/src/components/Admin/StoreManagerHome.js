@@ -58,17 +58,22 @@ class StoreManagerHome extends Component{
             <>
                 <div style={{ width: '75%', margin: '3rem auto' }}>
                     <div style={{ textAlign: 'center' }}>
-                        <h2>Manage Store Managers <span className="fas fa-air-freshener"></span></h2>
+                        <h2>Manage Store Managers <span className="fa fa-users"></span></h2>
                     </div>
                     <br />
                     <br />
                     <div className="row">
-                        <div className="col-md-3">
+                        <div className="col-md-5">
                             <h3>Store Managers List</h3>
                         </div>
-                        <div className="col-md-5"><p> </p></div>
-                        <div className="col-md-4">
-                            <button className="btn" id="btnAddNewStoreManager" onClick={() => this.nextAddNewStoreManager('/admin/storeManagerHome/upload')}><i className="fa fa-plus"></i> Add New Store Manager</button>
+                        <div className="col-md-3"><p> </p></div>
+                        <div className="col-md-4" align='right'>
+                            <button className="btn btn-success"
+                                    id="btnAddNewStoreManager"
+                                    onClick={() => this.nextAddNewStoreManager('/admin/storeManagerHome/upload')}>
+                                <i className="fa fa-plus"></i>
+                                Add New Store Manager
+                            </button>
                             <span>  </span>
                         </div>
                     </div>
