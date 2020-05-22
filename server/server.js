@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require("mongoose");
+const path = require('path')
 
 require('dotenv').config();
 
@@ -12,12 +13,12 @@ app.use(express.json());
 app.use(cors());
 
 //DB Config   //If cloning from git, include mongoURI in './config/keys'
-const mongoURI = require('./config/keys').MONGO_URI;
+//const mongoURI = require('./config/keys').MONGO_URI;
 //Use process.env.MONGO_URI instead of uri if using .env file
 
 //Connect to MongoDB
 mongoose
-    .connect(mongoURI,{ useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+    .connect(process.env.MONGO_URI,{ useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
     .then(() => console.log("MongoDB database connection established successfully"))
     .catch(err => console.log("ERROR: " + err));
 
@@ -43,6 +44,16 @@ app.use('/api/comments',commentsRouter);
 app.use('/api/payments',paymentRouter);
 
 app.use('/uploads', express.static('uploads'));
+
+//Serve static assets if in production
+if (process.env.NODE_ENV === 'production'){
+    //set static folder
+    app.use(express.static('client/build'));
+
+    app.get('*', (req, res) => {
+        res.sendfile(path.resolve(__dirname, 'client', 'build', index.html))
+    })
+}
 
 // Start server
 app.listen(port, () => {

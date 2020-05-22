@@ -70,7 +70,7 @@ class StoreManagerDashboard extends Component{
 
         return (
             <>
-            <div style={{ width: '75%', margin: '3rem auto' }}>
+            <div style={{ width: '75%', margin: '2rem auto' }}>
                 <div style={{ textAlign: 'center' }}>
                     <h2>Store Manager Dashboard  <span className="fas fa-air-freshener"></span></h2>
                 </div>
@@ -88,7 +88,7 @@ class StoreManagerDashboard extends Component{
                     </div>
                 </div>
 
-                <table className="table table-striped" style={{ marginTop: 20 }}>
+                <table className="table table-striped table100" style={{ marginTop: 20 }}>
                     <thead>
                         <tr>
                             <th>Product Name</th>
@@ -96,7 +96,7 @@ class StoreManagerDashboard extends Component{
                             <th>Brand</th>
                             <th>Quantity</th>
                             <th>Unit Price</th>
-                            <th>Actions</th>
+                            <th className="ActionHead">Actions</th>
                         </tr>
                     </thead>
                     <tbody>

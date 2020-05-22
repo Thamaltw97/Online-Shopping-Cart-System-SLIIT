@@ -1,9 +1,11 @@
 #.idea
 /client/.idea
 /server/.idea
+.idea
 
 # node modules
 /server/node_modules
+node_modules
 
 # config/keys MongoURI
 /server/config
