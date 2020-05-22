@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require("mongoose");
-const path = require('path')
+const path = require('path');
 
 require('dotenv').config();
 
@@ -12,9 +12,6 @@ const port = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cors());
 
-//DB Config   //If cloning from git, include mongoURI in './config/keys'
-//const mongoURI = require('./config/keys').MONGO_URI;
-//Use process.env.MONGO_URI instead of uri if using .env file
 
 //Connect to MongoDB
 mongoose
@@ -51,7 +48,7 @@ if (process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'));
 
     app.get('*', (req, res) => {
-        res.sendfile(path.resolve(__dirname, 'client', 'build', index.html))
+        res.sendfile(path.resolve(__dirname + "/../", 'client', 'build', index.html))
     })
 }
 
