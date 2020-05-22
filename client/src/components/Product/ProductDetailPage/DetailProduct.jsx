@@ -32,7 +32,7 @@ class DetailProduct extends React.Component{
             })
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps, prevState, snapshot) {
         Axios.get('http://localhost:5000/api/products/'+this.props.match.params.id)
             .then(response => {
                 this.setState({

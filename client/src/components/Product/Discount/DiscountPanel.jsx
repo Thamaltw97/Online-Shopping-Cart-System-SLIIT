@@ -66,7 +66,7 @@ class DiscountPanel extends React.Component{
                     </div>
                 </div>
 
-                <table className="table table-striped" style={{ marginTop: 20 }}>
+                <table className="table table-striped table100" style={{ marginTop: 20 }}>
                     <thead>
                     <tr>
                         <th>Discount Coupon Name</th>

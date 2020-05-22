@@ -152,16 +152,13 @@ class EditDiscount extends Component{
                                 <button type="submit" className="btn btn-block btn-success mt-3"
                                         id="btnUpdate"
                                         onClick={this.onUpdate}
-                                >Update</button>
+                                >Update Discount</button>
                             </div>
                             <div className="col-md-4">
                                 <button type="submit" className="btn btn-block btn-danger mt-3"
                                         id="btnDelete"
-                                        // onClick={() => {if (window.confirm('Are you sure to delete this record?')) {
-                                        //     this.onDelete.bind(this)
-                                        // } else { this.props.history.push('/discount/edit/'); }}}
                                         onClick={this.onDelete}
-                                >Delete Product</button>
+                                >Delete Discount</button>
                             </div>
                         </div>
 

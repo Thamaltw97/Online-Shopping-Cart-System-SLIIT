@@ -51,12 +51,12 @@ tr:nth-child(even) {
 }
 
 
-.table100 td {
-  font-family: Lato-Regular;
-  font-size: 15px;
-  color: #808080;
-  line-height: 1.4;
-}
+/*.table100 td {*/
+/*  font-family: Lato-Regular;*/
+/*  font-size: 15px;*/
+/*  color: #808080;*/
+/*  line-height: 1.4;*/
+/*}*/
 
 .table100 {
   border-radius: 10px;
