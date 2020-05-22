@@ -58,7 +58,7 @@ class CategoriesHome extends Component{
             <>
                 <div style={{ width: '75%', margin: '3rem auto' }}>
                     <div style={{ textAlign: 'center' }}>
-                        <h2>Manage Categories  <span className="fas fa-air-freshener"></span></h2>
+                        <h2>Manage Categories   <span className="fa fa-list"></span></h2>
                     </div>
                     <br />
                     <br />
@@ -67,8 +67,13 @@ class CategoriesHome extends Component{
                             <h3>Category List</h3>
                         </div>
                         <div className="col-md-5"><p> </p></div>
-                        <div className="col-md-4">
-                            <button className="btn" id="btnAddNewCategory" onClick={() => this.nextAddNewCategory('/admin/categoryHome/upload')}><i className="fa fa-plus"></i> Add New Category</button>
+                        <div className="col-md-4" align='right'>
+                            <button className="btn btn-success"
+                                    id="btnAddNewCategory"
+                                    onClick={() => this.nextAddNewCategory('/admin/categoryHome/upload')}>
+                                <i className="fa fa-plus"></i>
+                                Add New Category
+                            </button>
                             <span>  </span>
                         </div>
                     </div>
