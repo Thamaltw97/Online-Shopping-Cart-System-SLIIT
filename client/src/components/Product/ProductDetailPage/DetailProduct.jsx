@@ -6,6 +6,7 @@ import Axios from "axios";
 import ProductImage from "./ProductImage";
 import ProductInfo from "./ProductInfo";
 import '../StylesProduct.css'
+import "./ProductDetailPage.css"
 
 class DetailProduct extends React.Component{
 
@@ -68,7 +69,8 @@ class DetailProduct extends React.Component{
                         <br />
                         <div className="col-md-6">
                             <div style={{display: 'flex', justifyContent: 'center'}}>
-                                <Button size="large" shape="round" type="primary"
+                                <Button className="btn-ViewAllComment"
+                                        // size="large" shape="round" type="primary"
                                         onClick={() => this.nextCommentPath('/comments/' + this.state.productId)}
                                 >
                                     View all comments

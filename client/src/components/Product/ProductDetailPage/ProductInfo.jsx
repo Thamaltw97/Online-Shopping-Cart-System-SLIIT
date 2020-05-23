@@ -4,6 +4,9 @@ import '../StylesProduct.css'
 import React, {useEffect, useState} from "react";
 import {Button, Descriptions} from "antd";
 import Axios from "axios";
+import "./ProductDetailPage.css"
+// import "../StylesProduct.css";
+
 
 function ProductInfo(props){
 
@@ -179,14 +182,15 @@ function ProductInfo(props){
                             {/*<label>Quantity : </label>*/}
                             <input id="quantity" type="text" className="form-control "
                                    maxLength="50"
-                                   placeholder="1"
+                                   placeholder="0"
                                    onChange={onQuantityChange}
                                    value={QuantityValue} />
 
                         </div>
                         <div className="col-md-4">
                             <div style={{display: 'flex'}}>
-                                <Button size="large" shape="round" type="danger"
+                                <Button size="large" className="btn-shoppingCart"
+                                        // shape="round" type="danger"
                                         onClick={btnSCart}
                                 >
                                     Add to Cart<i className="fa fa-shopping-cart" aria-hidden="true"/>
@@ -195,7 +199,8 @@ function ProductInfo(props){
                         </div>
                         <div className="col-md-4">
                             <div style={{display: 'flex', justifyContent: 'center'}}>
-                                <Button size="large" shape="round" type="primary"
+                                <Button size="large" className="btn-Wishlist"
+                                        // shape="round" type="primary"
                                     onClick={btnWishList}
                                 >
                                     Add to Wishlist<i className="fa fa-heart" aria-hidden="true"/>
@@ -211,8 +216,9 @@ function ProductInfo(props){
                     <br />
                     <div className="row">
                         <div className="col-md-6">
-                            <div style={{display: 'flex', justifyContent: 'center'}}>
-                                <Button size="large" shape="round" type="danger"
+                            <div  style={{display: 'flex', justifyContent: 'center'}}>
+                                <Button className="btn-AddMyComment"
+                                        // size="large" shape="round" type="danger"
                                         //onClick={btnAddComment}
                                         data-toggle="modal" data-target="#myModal"
                                 >
