@@ -4,7 +4,7 @@
   "description": "Online Shopping App - Server",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "cd server/ && node server.js",
     "dev": "cd server/ && nodemon server.js",
     "client": "npm start --prefix client",
     "startdev": "concurrently \"npm run dev\" \"npm run client\"",
