@@ -16,13 +16,13 @@ function HomePage() {
 
     useEffect(() => {
 
-        Axios.get(process.env.API_URL || 'http://localhost:5000' + '/api/products/')
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/products/')
             .then(response => {
                 if (response.data.success){
 
                     setProducts(response.data.products);
 
-                    console.log(response.data.products);
+                    //console.log(response.data.products);
 
                 } else {
                     alert('ERROR: ' + response.data.err + 'from server!')
