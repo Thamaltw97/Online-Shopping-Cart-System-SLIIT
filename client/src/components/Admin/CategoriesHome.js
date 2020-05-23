@@ -22,7 +22,7 @@ class CategoriesHome extends Component{
     }
 
     componentDidMount() {
-        Axios.get('http://localhost:5000/api/categories/')
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/categories/')
             .then(response => {
                 this.setState({categories: response.data});
                 console.log(this.state.categories)
@@ -33,7 +33,7 @@ class CategoriesHome extends Component{
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        Axios.get('http://localhost:5000/api/categories/')
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/categories/')
             .then(response => {
                 this.setState({categories: response.data});
             })

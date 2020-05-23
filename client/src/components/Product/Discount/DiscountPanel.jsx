@@ -25,7 +25,7 @@ class DiscountPanel extends React.Component{
     }
 
     componentDidMount() {
-        Axios.get('http://localhost:5000/api/discounts/')
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/discounts/')
             .then(response => {
                 this.setState({discounts: response.data});
             })
@@ -35,7 +35,7 @@ class DiscountPanel extends React.Component{
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        Axios.get('http://localhost:5000/api/discounts/')
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/discounts/')
             .then(response => {
                 this.setState({discounts: response.data});
             })

@@ -101,7 +101,7 @@ function Payment(props) {
 
         };
 
-        Axios.post('http://localhost:5000/api/payments/add', paymentObj)
+        Axios.post('https://onlineshoppingcartsystemsliit.herokuapp.com/api/payments/add', paymentObj)
             .then(res => {
                 // alert(res.data.msg);
                 alert("Successfully Added Payment Details! ");

@@ -23,7 +23,7 @@ class EditDiscount extends Component{
     }
 
     componentDidMount() {
-        Axios.get('http://localhost:5000/api/discounts/'+this.props.match.params.id)
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/discounts/'+this.props.match.params.id)
             .then(response => {
                 this.setState({
                     discountCouponName: response.data.discount.discountCouponName,
@@ -71,7 +71,7 @@ class EditDiscount extends Component{
             discountAmount: this.state.discountAmount,
             discountRemarks: this.state.discountRemarks
         };
-        Axios.put('http://localhost:5000/api/discounts/update/' + this.state.discountId, obj)
+        Axios.put('https://onlineshoppingcartsystemsliit.herokuapp.com/api/discounts/update/' + this.state.discountId, obj)
             .then(res => {
                 if (res.data.success){
                     alert(res.data.successMsg);
@@ -86,7 +86,7 @@ class EditDiscount extends Component{
 
     onDelete(e) {
         e.preventDefault();
-        Axios.delete('http://localhost:5000/api/discounts/delete/' + this.state.discountId)
+        Axios.delete('https://onlineshoppingcartsystemsliit.herokuapp.com/api/discounts/delete/' + this.state.discountId)
             .then(res => {
                 if (res.data.success) {
                     alert(res.data.delSuccessMsg);

@@ -20,7 +20,7 @@ class DetailProduct extends React.Component{
     }
 
     componentDidMount() {
-        Axios.get('http://localhost:5000/api/products/'+this.props.match.params.id)
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/products/'+this.props.match.params.id)
             .then(response => {
                 this.setState({
                     Product: response.data.product,
@@ -34,7 +34,7 @@ class DetailProduct extends React.Component{
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        Axios.get('http://localhost:5000/api/products/'+this.props.match.params.id)
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/products/'+this.props.match.params.id)
             .then(response => {
                 this.setState({
                     Product: response.data.product,

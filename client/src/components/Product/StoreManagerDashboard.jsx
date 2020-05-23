@@ -30,7 +30,7 @@ class StoreManagerDashboard extends Component{
     }
 
     componentDidMount() {
-        Axios.get('http://localhost:5000/api/products/')
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/products/')
             .then(response => {
                 this.setState({products: response.data.products});
                 //console.log(this.state.products)
@@ -41,7 +41,7 @@ class StoreManagerDashboard extends Component{
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        Axios.get('http://localhost:5000/api/products/')
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/products/')
             .then(response => {
                 this.setState({products: response.data.products});
             })

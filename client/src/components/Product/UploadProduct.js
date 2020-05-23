@@ -3,13 +3,6 @@ import ImgUpload from './ImageUpload';
 import './StylesProduct.css';
 import Axios from "axios";
 
-// const Categories = [
-//     { key: 6, value: "Men's wear" },
-//     { key: 7, value: "Women's wear" },
-//     { key: 8, value: "Kid's wear" },
-//     { key: 9, value: "Accessories" },
-//     { key: 10, value: "Shoes" }
-// ];
 
 const Sizes = [
     { key: 1, value: "X-Small" },
@@ -75,7 +68,7 @@ function UploadProductPage(props) {
     };
 
     useEffect(() => {
-        Axios.get('http://localhost:5000/api/categories/')
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/categories/')
             .then(response => {
                 if (response.data.length > 0) {
                     // this.setState({
@@ -112,7 +105,7 @@ function UploadProductPage(props) {
             productRemarks: RemarksValue
         };
 
-        Axios.post('http://localhost:5000/api/products/add', productObj)
+        Axios.post('https://onlineshoppingcartsystemsliit.herokuapp.com/api/products/add', productObj)
             .then(res => {
                 alert(res.data);
                 props.history.push('/product/storemanager');

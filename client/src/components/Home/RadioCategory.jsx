@@ -35,19 +35,6 @@ const category = [
 
 function RadioCategory(props) {
 
-    //const [CategoryValue, setCategoriesValue] = useState([]);
-
-    // useEffect(() => {
-    //     Axios.get('http://localhost:5000/api/categories/')
-    //         .then(response => {
-    //             setCategoriesValue(response.data)
-    //             // CategoryValue.push()
-    //             // setBooVal(true)
-    //         })
-    //         .catch(function (err) {
-    //             console.log(err)
-    //         });
-    // }, []);
 
     const [Value, setValue] = useState('0');
     //const [ValuePass, setValuePass] = useState('Any');

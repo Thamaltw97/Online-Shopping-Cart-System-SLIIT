@@ -19,7 +19,7 @@ class EditComment extends React.Component{
     }
 
     componentDidMount() {
-        Axios.get('http://localhost:5000/api/comments/' + this.props.match.params.id)
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/comments/' + this.props.match.params.id)
             .then(response => {
                 this.setState({
                     comment: response.data.comments.comment,
@@ -51,7 +51,7 @@ class EditComment extends React.Component{
             comment: this.state.comment,
             suggestions: this.state.suggestions,
         };
-        Axios.put('http://localhost:5000/api/comments/update/' + this.props.match.params.id, obj)
+        Axios.put('https://onlineshoppingcartsystemsliit.herokuapp.com/api/comments/update/' + this.props.match.params.id, obj)
             .then(res => {
                 if (res.data.success){
                     alert(res.data.successMsg);
@@ -67,7 +67,7 @@ class EditComment extends React.Component{
 
     onDelete(e) {
         e.preventDefault();
-        Axios.delete('http://localhost:5000/api/comments/delete/' + this.props.match.params.id)
+        Axios.delete('https://onlineshoppingcartsystemsliit.herokuapp.com/api/comments/delete/' + this.props.match.params.id)
             .then(res => {
                 if (res.data.success) {
                     alert(res.data.delSuccessMsg);

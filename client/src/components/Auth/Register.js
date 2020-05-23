@@ -60,7 +60,7 @@ function Register(props) {
 
         };
 
-        Axios.post('http://localhost:5000/api/users/register', userObj)
+        Axios.post('https://onlineshoppingcartsystemsliit.herokuapp.com/api/users/register', userObj)
             .then(res => {
                 // alert(res.data.msg);
                 alert("Successfully Registered!");

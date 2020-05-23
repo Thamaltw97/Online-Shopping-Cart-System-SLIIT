@@ -27,7 +27,7 @@ class EditProduct extends Component{
     }
 
     componentDidMount() {
-        Axios.get('http://localhost:5000/api/products/'+this.props.match.params.id)
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/products/'+this.props.match.params.id)
             .then(response => {
                 this.setState({
                     productName: response.data.product.productName,
@@ -82,7 +82,7 @@ class EditProduct extends Component{
             productQuantity: this.state.productQuantity,
             productUnitPrice: this.state.productUnitPrice,
         };
-        Axios.put('http://localhost:5000/api/products/update/'+this.state.productId, obj)
+        Axios.put('https://onlineshoppingcartsystemsliit.herokuapp.com/api/products/update/'+this.state.productId, obj)
             .then(res => {
                 if (res.data.success){
                     alert(res.data.successMsg);
@@ -97,7 +97,7 @@ class EditProduct extends Component{
 
     onDelete(e) {
         e.preventDefault();
-        Axios.delete('http://localhost:5000/api/products/delete/' + this.state.productId)
+        Axios.delete('https://onlineshoppingcartsystemsliit.herokuapp.com/api/products/delete/' + this.state.productId)
             .then(res => {
                 if (res.data.success) {
                     alert(res.data.delSuccessMsg);

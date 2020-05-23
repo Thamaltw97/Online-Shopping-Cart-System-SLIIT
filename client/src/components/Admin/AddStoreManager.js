@@ -43,7 +43,7 @@ function AddStoreManagerPage(props) {
 
         console.log(storeManagerObj)
 
-        Axios.post('http://localhost:5000/api/users/register', storeManagerObj)
+        Axios.post('https://onlineshoppingcartsystemsliit.herokuapp.com/api/users/register', storeManagerObj)
             .then(res => {
                 alert('Successfully added to Store Managers');
                 props.history.push('/admin/storeManagerHome');

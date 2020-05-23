@@ -17,7 +17,7 @@ function HomePage() {
 
     useEffect(() => {
 
-        Axios.get('http://localhost:5000/api/products/')
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/products/')
             .then(response => {
                 if (response.data.success){
 
@@ -57,7 +57,7 @@ function HomePage() {
         // console.log(category);
 
         if (category === 'Any'){
-            Axios.get('http://localhost:5000/api/products/')
+            Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/products/')
                 .then(response => {
                     if (response.data.success){
 
@@ -73,7 +73,7 @@ function HomePage() {
                     console.log('Error' + err + 'from client!')
                 });
         } else {
-            Axios.post('http://localhost:5000/api/products/categorywise/', {productCategory: category})
+            Axios.post('https://onlineshoppingcartsystemsliit.herokuapp.com/api/products/categorywise/', {productCategory: category})
                 .then(response => {
                     if (response.data.success){
 
@@ -119,9 +119,6 @@ function HomePage() {
             }
             <br />
             <br />
-            {/*<div style={{ display: 'flex', justifyContent: 'center' }}>*/}
-            {/*    <button>Load More</button>*/}
-            {/*</div>*/}
         </div>
     )
 

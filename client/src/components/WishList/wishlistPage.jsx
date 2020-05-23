@@ -13,7 +13,7 @@ const Item = props => (
         <td>
             <button type="submit" className="btn btn-block btn-danger mt-3" id="btnDelete"
                     onClick={() =>
-                        Axios.delete('http://localhost:5000/api/wishlists/delete/' + props.item._id)
+                        Axios.delete('https://onlineshoppingcartsystemsliit.herokuapp.com/api/wishlists/delete/' + props.item._id)
                             .then(res => {
                                     alert(res.data);
                                     //this.props.history.push('/wishlist/wishlist');
@@ -37,7 +37,7 @@ export default class WishList extends Component{
     }
 
     componentDidMount() {
-        Axios.get('http://localhost:5000/api/wishlists/wishlistbyuser/' + localStorage.getItem('user-id'))
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/wishlists/wishlistbyuser/' + localStorage.getItem('user-id'))
             .then(response => {
                 this.setState({items: response.data.wishlist});
                 //console.log(this.state.items)
@@ -48,7 +48,7 @@ export default class WishList extends Component{
     }
 
     componentDidUpdate() {
-        Axios.get('http://localhost:5000/api/wishlists/wishlistbyuser/' + localStorage.getItem('user-id'))
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/wishlists/wishlistbyuser/' + localStorage.getItem('user-id'))
             .then(response => {
                 this.setState({items: response.data.wishlist});
                 //console.log(this.state.items)

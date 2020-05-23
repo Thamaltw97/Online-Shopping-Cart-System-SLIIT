@@ -24,7 +24,7 @@ class EditStoreManager extends Component{
     }
 
     componentDidMount() {
-        Axios.get('http://localhost:5000/api/users/'+this.props.match.params.id)
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/users/'+this.props.match.params.id)
             .then(response => {
                 this.setState({
                     smName: response.data.user.displayName,
@@ -82,7 +82,7 @@ class EditStoreManager extends Component{
             password: this.state.smPassword,
             //smPasswordCheck: this.state.smPasswordCheck,
         };
-        Axios.put('http://localhost:5000/api/users/update/'+this.state.smId, obj)
+        Axios.put('https://onlineshoppingcartsystemsliit.herokuapp.com/api/users/update/'+this.state.smId, obj)
             .then(res => {
                 if (res.data.success){
                     alert('Successfully Updated');
@@ -97,7 +97,7 @@ class EditStoreManager extends Component{
 
     onDelete(e) {
         e.preventDefault();
-        Axios.delete('http://localhost:5000/api/users/delete/' + this.state.smId)
+        Axios.delete('https://onlineshoppingcartsystemsliit.herokuapp.com/api/users/delete/' + this.state.smId)
             .then(res => {
                 if (res.data.success) {
                     alert('Successfully Deleted');

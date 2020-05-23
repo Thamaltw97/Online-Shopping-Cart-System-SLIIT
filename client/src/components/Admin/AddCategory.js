@@ -26,7 +26,7 @@ function AddCategoryPage(props) {
 
         console.log(categoryObj)
 
-        Axios.post('http://localhost:5000/api/categories/add', categoryObj)
+        Axios.post('https://onlineshoppingcartsystemsliit.herokuapp.com/api/categories/add', categoryObj)
             .then(res => {
                 alert(res.data);
                 props.history.push('/admin/categoryHome');

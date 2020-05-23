@@ -24,7 +24,7 @@ class AddDiscount extends Component{
     }
 
     componentDidMount() {
-        Axios.get('http://localhost:5000/api/products/' + this.state.discountProductId)
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/products/' + this.state.discountProductId)
             .then(response => {
                 this.setState({
                     discountProductName: response.data.product.productName
@@ -70,7 +70,7 @@ class AddDiscount extends Component{
             discountRemarks: this.state.discountRemarks
         };
         //console.log(obj)
-        Axios.post('http://localhost:5000/api/discounts/add', obj)
+        Axios.post('https://onlineshoppingcartsystemsliit.herokuapp.com/api/discounts/add', obj)
             .then(res => {
                 alert(res.data);
             })

@@ -32,7 +32,7 @@ class ViewComments extends React.Component {
 
 
     componentDidMount() {
-        Axios.get('http://localhost:5000/api/comments/allcomments/' + this.props.match.params.id)
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/comments/allcomments/' + this.props.match.params.id)
             .then(response => {
                 this.setState({allComments: response.data.comments});
                 //console.log(this.state.allComments)
@@ -41,7 +41,7 @@ class ViewComments extends React.Component {
                 console.log(err);
             })
 
-        Axios.post('http://localhost:5000/api/comments/mycomments/' + this.props.match.params.id, {userId: localStorage.getItem('user-id')})
+        Axios.post('https://onlineshoppingcartsystemsliit.herokuapp.com/api/comments/mycomments/' + this.props.match.params.id, {userId: localStorage.getItem('user-id')})
             .then(response => {
                 this.setState({myComments: response.data.comments});
                 //console.log(this.state.myComments)

@@ -16,7 +16,7 @@ const Item = props => (
 
         <button className="btn btn-danger" button type="submit" id="btnDelete"
                 onClick={() =>
-                    Axios.delete('http://localhost:5000/api/cart/delete/' + props.item._id)
+                    Axios.delete('https://onlineshoppingcartsystemsliit.herokuapp.com/api/cart/delete/' + props.item._id)
                         .then(res => {
                             // alert(res.data);
                             alert("Your Item has been Deleted!")
@@ -50,7 +50,7 @@ export default class Cart extends Component{
 
 
     componentDidMount() {
-        Axios.get('http://localhost:5000/api/cart/cartbyuser/' + localStorage.getItem('user-id'))
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/cart/cartbyuser/' + localStorage.getItem('user-id'))
             .then(response => {
                 this.setState({items: response.data.cart});
                 let finalAmount = 0;
@@ -117,11 +117,6 @@ export default class Cart extends Component{
 
                             <i className="fa fa-chevron-left" aria-hidden="true"/>       Back to Shopping</button>
                     </div>
-                    {/*<div >*/}
-                    {/*<button className="btn btn-info button-empty"*/}
-                    {/*    >*/}
-                    {/*    <i className="fa fa-eraser" aria-hidden="true"/>   Empty Shopping Cart</button>*/}
-                    {/*</div>*/}
 
                 </div>
                 <div className="div-space1"/>

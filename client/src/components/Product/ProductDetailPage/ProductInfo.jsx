@@ -37,7 +37,7 @@ function ProductInfo(props){
 
 
     useEffect(() => {
-        Axios.get('http://localhost:5000/api/discounts/productdiscount/' + Product._id)
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/discounts/productdiscount/' + Product._id)
             .then(response => {
                 if (response.data.length > 0){
                     let x = parseFloat(response.data[0].discountAmount);
@@ -93,7 +93,7 @@ function ProductInfo(props){
             cartUserId: localStorage.getItem('user-id')
         };
 
-        Axios.post('http://localhost:5000/api/cart/add', cartObj)
+        Axios.post('https://onlineshoppingcartsystemsliit.herokuapp.com/api/cart/add', cartObj)
             .then(res => {
                 alert(res.data);
                 setQuantityValue('');
@@ -116,7 +116,7 @@ function ProductInfo(props){
             wishUserId: localStorage.getItem('user-id')
         };
 
-        Axios.post('http://localhost:5000/api/wishlists/add', wishListObj)
+        Axios.post('https://onlineshoppingcartsystemsliit.herokuapp.com/api/wishlists/add', wishListObj)
             .then(res => {
                 alert(res.data);
                 //props.history.push('/wishlist/wishlist');
@@ -142,7 +142,7 @@ function ProductInfo(props){
             userId: localStorage.getItem('user-id')
         };
 
-        Axios.post('http://localhost:5000/api/comments/add', commentObj)
+        Axios.post('https://onlineshoppingcartsystemsliit.herokuapp.com/api/comments/add', commentObj)
             .then(res => {
                 alert(res.data);
                 setCommentValue('');

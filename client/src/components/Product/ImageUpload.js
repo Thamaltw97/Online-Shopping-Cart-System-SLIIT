@@ -16,7 +16,7 @@ function ImageUpload(props) {
         };
         formData.append("file", files[0]);
 
-        Axios.post('http://localhost:5000/api/products/uploadimage', formData, config)
+        Axios.post('https://onlineshoppingcartsystemsliit.herokuapp.com/api/products/uploadimage', formData, config)
         .then(res => {
             //console.log(res.data);
             if(res.data.success){

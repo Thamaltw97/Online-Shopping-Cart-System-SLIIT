@@ -19,7 +19,7 @@ class EditCategory extends Component{
     }
 
     componentDidMount() {
-        Axios.get('http://localhost:5000/api/categories/'+this.props.match.params.id)
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/categories/'+this.props.match.params.id)
             .then(response => {
                 this.setState({
                     categoryName: response.data.categoryName,
@@ -51,7 +51,7 @@ class EditCategory extends Component{
             categoryName: this.state.categoryName,
             categoryDesc: this.state.categoryDesc,
         };
-        Axios.put('http://localhost:5000/api/categories/update/'+this.state.categoryId, obj)
+        Axios.put('https://onlineshoppingcartsystemsliit.herokuapp.com/api/categories/update/'+this.state.categoryId, obj)
             .then(res => {
                 if (res.data){
                     alert(res.data);
@@ -65,7 +65,7 @@ class EditCategory extends Component{
 
     onDelete(e) {
         e.preventDefault();
-        Axios.delete('http://localhost:5000/api/categories/delete/'+ this.state.categoryId)
+        Axios.delete('https://onlineshoppingcartsystemsliit.herokuapp.com/api/categories/delete/'+ this.state.categoryId)
             .then(res => {
                 if (res.data) {
                     alert(res.data);

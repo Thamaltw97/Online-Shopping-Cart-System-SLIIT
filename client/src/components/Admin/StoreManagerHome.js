@@ -22,7 +22,7 @@ class StoreManagerHome extends Component{
     }
 
     componentDidMount() {
-        Axios.get('http://localhost:5000/api/users/getstoremanagers')
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/users/getstoremanagers')
             .then(response => {
                 this.setState({storeManagers: response.data.storemanagers});
                 console.log(this.state.storeManagers)
@@ -33,7 +33,7 @@ class StoreManagerHome extends Component{
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        Axios.get('http://localhost:5000/api/users/getstoremanagers')
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/users/getstoremanagers')
             .then(response => {
                 this.setState({storeManagers: response.data.storemanagers});
             })
