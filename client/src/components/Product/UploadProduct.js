@@ -89,8 +89,8 @@ function UploadProductPage(props) {
                 }
             })
     },[]);
-    console.log(CategoryValue);
-    console.log(CategoriesValue);
+    // console.log(CategoryValue);
+    // console.log(CategoriesValue);
     const onSubmit = (e) => {
         e.preventDefault();
 

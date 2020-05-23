@@ -22,7 +22,7 @@ function HomePage() {
 
                     setProducts(response.data.products);
 
-                    console.log(response.data.products);
+                    //console.log(response.data.products);
 
                 } else {
                     alert('ERROR: ' + response.data.err + 'from server!')

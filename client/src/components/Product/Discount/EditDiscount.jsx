@@ -32,7 +32,7 @@ class EditDiscount extends Component{
                     discountRemarks: response.data.discount.discountRemarks,
                     discountId: this.props.match.params.id
                 });
-                console.log(this.state)
+                //console.log(this.state)
             })
             .catch(function (err) {
                 console.log(err)
@@ -90,7 +90,7 @@ class EditDiscount extends Component{
             .then(res => {
                 if (res.data.success) {
                     alert(res.data.delSuccessMsg);
-                    console.log('Successfully deleted.')
+                    //console.log('Successfully deleted.')
                 } else {
                     alert(res.data.err);
                 }

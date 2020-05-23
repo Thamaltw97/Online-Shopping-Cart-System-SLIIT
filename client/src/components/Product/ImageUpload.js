@@ -13,7 +13,7 @@ function ImageUpload(props) {
         let formData =  new FormData();
         const config = {
             header: {'content-type': 'multipart/form-data'}
-        }
+        };
         formData.append("file", files[0]);
 
         Axios.post('http://localhost:5000/api/products/uploadimage', formData, config)

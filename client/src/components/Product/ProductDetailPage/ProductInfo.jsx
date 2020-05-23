@@ -173,15 +173,19 @@ function ProductInfo(props){
             {localStorage.getItem('user-role') === 'user' ?
                 <div>
                     <div className="row">
-                        <div className="col-md-6">
+                        <div className="col-md-1"></div>
+                        <div className="col-md-2">
 
-                            <label>Quantity : </label>
+                            {/*<label>Quantity : </label>*/}
                             <input id="quantity" type="text" className="form-control "
                                    maxLength="50"
                                    placeholder="1"
                                    onChange={onQuantityChange}
                                    value={QuantityValue} />
-                            <div style={{display: 'flex', justifyContent: 'center'}}>
+
+                        </div>
+                        <div className="col-md-4">
+                            <div style={{display: 'flex'}}>
                                 <Button size="large" shape="round" type="danger"
                                         onClick={btnSCart}
                                 >
@@ -189,7 +193,7 @@ function ProductInfo(props){
                                 </Button>
                             </div>
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-4">
                             <div style={{display: 'flex', justifyContent: 'center'}}>
                                 <Button size="large" shape="round" type="primary"
                                     onClick={btnWishList}
@@ -199,6 +203,11 @@ function ProductInfo(props){
                             </div>
                         </div>
                     </div>
+                    <br />
+                    {/*<fieldset className="custom-border">*/}
+                    {/*    <legend className="custom-border">Item Details</legend>*/}
+                    {/*</fieldset>*/}
+                    <br />
                     <br />
                     <div className="row">
                         <div className="col-md-6">

@@ -33,7 +33,7 @@ class StoreManagerDashboard extends Component{
         Axios.get('http://localhost:5000/api/products/')
             .then(response => {
                 this.setState({products: response.data.products});
-                console.log(this.state.products)
+                //console.log(this.state.products)
             })
             .catch(function (err) {
                 console.log(err);
@@ -70,7 +70,7 @@ class StoreManagerDashboard extends Component{
 
         return (
             <>
-            <div style={{ width: '75%', margin: '2rem auto' }}>
+            <div style={{ width: '80%', margin: '3rem auto' }}>
                 <div style={{ textAlign: 'center' }}>
                     <h2>Store Manager Dashboard  <span className="fas fa-air-freshener"></span></h2>
                 </div>
@@ -81,9 +81,9 @@ class StoreManagerDashboard extends Component{
                         <h3>Product List</h3>
                     </div>
                     <div className="col-md-5"><p> </p></div>
-                    <div className="col-md-4">
+                    <div className="col-md-4" style={{justifyContent: 'right'}}>
                         <button className="btn" id="btnAddNewProduct" onClick={() => this.nextUploadPath('/product/upload')}><i className="fa fa-plus"></i> Add New Product</button>
-                        <span>  </span>
+                        <span>       </span>
                         <button className="btn" id="btnDiscountPanel" onClick={() => this.nextDiscountPath('/product/discount')}><i className="fas fa-percent"></i> Discount Panel</button>
                     </div>
                 </div>
