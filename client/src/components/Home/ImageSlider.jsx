@@ -10,7 +10,7 @@ function ImageSlider(props) {
                 {props.images.map((image, index) => (
                     <div key={index}>
                         <img style={{ width: '100%', maxHeight: '270px'}}
-                             src={process.env.API_URL || `http://localhost:5000/`  ${image}}
+                             src={process.env.API_URL || `http://localhost:5000/` ${image}}
                              alt={`productImg-${index}`}/>
                     </div>
                 ))}
