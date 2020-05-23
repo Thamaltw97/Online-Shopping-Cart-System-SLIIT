@@ -16,7 +16,7 @@ function HomePage() {
 
     useEffect(() => {
 
-        Axios.get('http://localhost:5000/api/products/')
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/products/')
             .then(response => {
                 if (response.data.success){
 
