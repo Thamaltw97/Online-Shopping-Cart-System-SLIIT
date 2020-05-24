@@ -12,23 +12,30 @@ class EditCart extends Component{
 
         this.state = {
             itemId: this.props.match.params.id,
-            quantity: 0
+            quantity: 0,
+            productName: '',
+            productUnitPrice: 0,
+            totalPrice: 0
         }
     }
 
     onQtyChange(e) {
         this.setState({
-            quantity: e.target.quantity
+            quantity: e.target.value
         });
+        //console.log(this.state.quantity)
     }
 
     componentDidMount() {
         Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/cart/'+this.props.match.params.id)
             .then(response => {
                 this.setState({
-                    quantity: response.data.quantity
+                    quantity: response.data.quantity,
+                    productName: response.data.productName,
+                    totalPrice: response.data.totalPrice,
+                    productUnitPrice: response.data.totalPrice / response.data.quantity
                 });
-                console.log(response.data)
+                console.log(this.state.quantity)
             })
             .catch(function (err) {
                 console.log(err)
@@ -37,10 +44,13 @@ class EditCart extends Component{
 
     onUpdate(e) {
         e.preventDefault();
+        let tot = this.state.productUnitPrice * this.state.quantity;
+        console.log(tot);
         const obj = {
             quantity: this.state.quantity,
+            totalPrice: tot
         };
-        Axios.put('https://onlineshoppingcartsystemsliit.herokuapp.com/api/cart/update/' + this.state.itemId, obj)
+        Axios.put('https://onlineshoppingcartsystemsliit.herokuapp.com/api/cart/update/' + this.props.match.params.id, obj)
             .then(res => {
                 if (res.data){
                     alert(res.data);
@@ -49,7 +59,7 @@ class EditCart extends Component{
                 }
             })
             .catch(err => {console.log('Error from client: ' + err)});
-        this.props.history.push('/cart');
+        // this.props.history.push('/cart');
     }
 
     render() {
@@ -71,7 +81,7 @@ class EditCart extends Component{
                                 />
                                 <br/>
                                 <label>Item Quantity : </label>
-                                <input id="itemQuantity" type="number" className="form-control text-capitalize"
+                                <input id="itemQuantity" type="number" className="form-control"
                                        maxLength="12" min="1"
                                        placeholder="Enter Item Quantity"
                                        onChange={this.onQtyChange}

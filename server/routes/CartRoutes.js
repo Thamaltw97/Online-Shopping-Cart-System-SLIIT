@@ -51,7 +51,7 @@ router.route('/update/:id').put((req, res) => {
     CartItems.findById(req.params.id)
         .then(newItem => {
             newItem.quantity = req.body.quantity;
-
+            newItem.totalPrice = req.body.totalPrice;
             newItem.save()
                 .then(() => res.json('Successfully Updated. (Item id: ' + req.params.id + ')'))
                 .catch(err => res.status(400).json('Error: ' + err));
