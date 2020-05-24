@@ -89,7 +89,7 @@ class EditCategory extends Component{
                             <div className="row">
                                 <div className="col-md-2"></div>
                                 <div className="col-md-8">
-                                    <h2 className="text-capitalize text-center mt-3 mb-2">Edit Store Manager <span className= "fa fa-pencil-square-o"></span></h2>
+                                    <h2 className="text-capitalize text-center mt-3 mb-2">Edit Category <span className= "fa fa-pencil-square-o"></span></h2>
                                     <br/>
                                     <br />
                                     <label>Category Name : </label>

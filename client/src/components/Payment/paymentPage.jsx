@@ -132,35 +132,35 @@ function Payment(props) {
                                 <div className="col-50">
                                     <h3>Billing Address</h3>
                                     <label htmlFor="fname"><i className="fa fa-user"/> Full Name</label>
-                                    <input type="text" id="fname" name="firstname" placeholder="Maleesha Perera"
+                                    <input type="text" id="fname" name="firstname" placeholder="Enter your name"
                                            onChange={onFullNameChange}
                                            value={FullNameValue}/>
 
                                     <label htmlFor="email"><i className="fa fa-envelope"/> Email</label>
-                                    <input type="text" id="email" name="email" placeholder="maleesha97@gmail.com"
+                                    <input type="text" id="email" name="email" placeholder="Enter your email"
                                            onChange={onEmailChange}
                                            value={EmailValue}/>
 
                                     <label htmlFor="adr"><i className="fa fa-address-card-o"/> Address</label>
-                                    <input type="text" id="adr" name="address" placeholder="542 . 15th Street"
+                                    <input type="text" id="adr" name="address" placeholder="Enter your address"
                                            onChange={onAddressChange}
                                            value={AddressValue}/>
 
                                     <label htmlFor="city"><i className="fa fa-institution"/> City</label>
-                                    <input type="text" id="city" name="city" placeholder="Colombo"
+                                    <input type="text" id="city" name="city" placeholder="Enter your City"
                                            onChange={onCityChange}
                                            value={CityValue}/>
 
                                     <div className="row">
                                         <div className="col-50">
                                             <label htmlFor="country">Country</label>
-                                            <input type="text" id="country" name="state" placeholder="Sri Lanka"
+                                            <input type="text" id="country" name="state" placeholder="Enter your country"
                                                    onChange={onCountryChange}
                                                    value={CountryValue}/>
                                         </div>
                                         <div className="col-50">
                                             <label htmlFor="zip">Zip</label>
-                                            <input type="text" id="zip" name="zip" placeholder="10115"
+                                            <input type="text" id="zip" name="zip" placeholder="Enter zip code"
                                                    onChange={onZipChange}
                                                    value={ZipValue}/>
                                         </div>
@@ -177,19 +177,18 @@ function Payment(props) {
                                         <i className="fa fa-cc-discover discover"/>
                                     </div>
                                     <label htmlFor="cname">Name on Card</label>
-                                    <input type="text" id="cname" name="cardname" placeholder="Maleesha
-                                        perera"
+                                    <input type="text" id="cname" name="cardname" placeholder="Enter the name on the card"
                                            onChange={onNameOnCardChange}
                                            value={NameOnCardValue}/>
 
                                     <label htmlFor="ccnum">Credit card number</label>
                                     <input type="text" id="ccnum" name="cardnumber"
-                                           placeholder="1111-2222-3333-4444"
+                                           placeholder="Enter your 16 digits card number"
                                            onChange={onCardNoChange}
                                            value={CardNoValue}/>
 
                                     <label htmlFor="expmonth">Exp Month</label>
-                                    <input type="text" id="expmonth" name="expmonth" placeholder="January"
+                                    <input type="text" id="expmonth" name="expmonth" placeholder="Enter card expiry month"
                                            onChange={onExpMonthChange}
                                            value={ExpMonthValue}/>
 
@@ -197,13 +196,13 @@ function Payment(props) {
                                         <div className="col-50">
                                             <label htmlFor="expyear">Exp Year</label>
                                             <input type="text" id="expyear" name="expyear"
-                                                   placeholder="2020"
+                                                   placeholder="Enter card expiry year"
                                                    onChange={onExpYearChange}
                                                    value={ExpYearValue}/>
                                         </div>
                                         <div className="col-50">
                                             <label htmlFor="cvv">CVV</label>
-                                            <input type="text" id="cvv" name="cvv" placeholder="352"
+                                            <input type="text" id="cvv" name="cvv" placeholder="Enter card cvv value"
                                                    onChange={onCvvChange}
                                                    value={CvvValue}/>
                                         </div>
@@ -216,17 +215,14 @@ function Payment(props) {
                                 billing
                             </label>
                             <div>
-                                {/*<input type="submit" value="Cancel" className="btn-cancel"/>*/}
-                                {/*<input type="submit" value="Continue to CHECKOUT" className="btn-continueCheckout"/>*/}
-
-                                <button type="submit" className="btn btn-block btn-danger mt-3 btn-cancel"
-                                        id="btnSubmit"
-                                        onClick={onCancel}
-                                >Cancel</button>
                                 <button type="submit" className="btn btn-block btn-success mt-3 btn-continueCheckout"
                                         id="btnSubmit"
                                         onClick={onCheckout}
                                 >Continue to CHECKOUT</button>
+                                <button type="submit" className="btn btn-block btn-danger mt-3 btn-cancel"
+                                        id="btnSubmit"
+                                        onClick={onCancel}
+                                >Cancel</button>
                             </div>
 
                         </form>
