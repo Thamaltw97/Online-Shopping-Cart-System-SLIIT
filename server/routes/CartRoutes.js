@@ -46,22 +46,14 @@ router.route('/:id').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-//Update product by id route
+//Update Item by id route
 router.route('/update/:id').put((req, res) => {
     CartItems.findById(req.params.id)
         .then(newItem => {
-            newItem.productName = req.body.productName;
-            newItem.productDesc = req.body.productDesc;
-            //newItem.productBrand = req.body.productBrand;
-            newItem.productColour = req.body.productColour;
-            newItem.productSize = req.body.productSize;
-            // newItem.productQuantity = req.body.productQuantity;
-            newItem.productUnitPrice = req.body.productUnitPrice;
             newItem.quantity = req.body.quantity;
-            newItem.totalPrice = req.body.totalPrice;
 
             newItem.save()
-                .then(() => res.json('Successfully Updated. (Product id: ' + req.params.id + ')'))
+                .then(() => res.json('Successfully Updated. (Item id: ' + req.params.id + ')'))
                 .catch(err => res.status(400).json('Error: ' + err));
         })
         .catch(err => res.status(400).json('Error: ' + err));

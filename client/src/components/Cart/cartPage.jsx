@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Axios from "axios";
 import './cartPage.css'
+import {Link} from "react-router-dom";
 
 
 const Item = props => (
@@ -13,7 +14,7 @@ const Item = props => (
         <td>{props.item.quantity}</td>
         <td>{props.item.totalPrice}</td>
         <td>
-
+        <Link to={"/cart/edit/"+props.item._id}>Edit</Link><span> </span>
         <button className="btn btn-danger" button type="submit" id="btnDelete"
                 onClick={() =>
                     Axios.delete('https://onlineshoppingcartsystemsliit.herokuapp.com/api/cart/delete/' + props.item._id)

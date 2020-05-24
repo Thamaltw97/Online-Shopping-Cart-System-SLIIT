@@ -31,6 +31,7 @@ import StoreManagerNav from "./components/Shared/StoreManagerNav";
 import ViewComments from "./components/Comment/ViewComments";
 import EditComment from "./components/Comment/EditComment";
 import Payment from "./components/Payment/paymentPage";
+import EditCart from "./components/Cart/EditCart";
 
 function App(props) {
 
@@ -111,6 +112,7 @@ function App(props) {
                                 <Route exact path="/home" component={() => checkLogin("/home")}/>
                                 <Route path="/register" component={Register} />
                                 <Route path="/login" component={Login} />
+                                <Route path="/cart/edit/:id" component={EditCart}/>
                                 <Route path="/cart" component={CartPage}/>
                                 <Route path="/payment" component={Payment}/>
 
