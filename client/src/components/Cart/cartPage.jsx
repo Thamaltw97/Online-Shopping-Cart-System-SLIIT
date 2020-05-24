@@ -62,8 +62,10 @@ export default class Cart extends Component{
             .catch(function (err) {
                 console.log(err);
             })
+    }
 
-
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        this.componentDidMount()
     }
 
     itemList() {

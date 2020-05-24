@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Axios from "axios";
+import {Button} from "antd";
 //import { Link } from "react-router-dom";
 
 
@@ -33,6 +34,7 @@ export default class WishList extends Component{
 
     constructor(props) {
         super(props);
+        this.addToCart = this.addToCart.bind(this);
         this.state = {items: []};
     }
 
@@ -64,6 +66,39 @@ export default class WishList extends Component{
             });
     }
 
+    addToCart() {
+        for(let i = 0 ; i < this.state.items.length ; i++){
+            let cartObj = {
+                productName: this.state.items[i].productName,
+                productDesc: this.state.items[i].productDesc,
+                productSize: this.state.items[i].productSize,
+                productColour: this.state.items[i].productColour,
+                productUnitPrice: this.state.items[i].productUnitPrice,
+                quantity: 1,
+                totalPrice: this.state.items[i].productUnitPrice,
+                cartUserId: localStorage.getItem('user-id')
+            };
+
+            Axios.post('https://onlineshoppingcartsystemsliit.herokuapp.com/api/cart/add', cartObj)
+                .then(res => {
+                    Axios.delete('https://onlineshoppingcartsystemsliit.herokuapp.com/api/wishlists/delete/' + this.state.items[i]._id)
+                        .then(res => {
+                            //alert(res.data);
+                        })
+                        .catch(err => {
+                            console.log('Error from client when deleting wishlist: ' + err)
+                        });
+                    if (i === this.state.items.length - 1) {
+                        alert(res.data);
+                    }
+                })
+                .catch(err => {
+                    alert('Error from client: ' + err);
+                });
+
+        }
+    }
+
 
     render() {
         return (
@@ -85,6 +120,7 @@ export default class WishList extends Component{
                         {this.itemList()}
                     </tbody>
                 </table>
+                <Button className="btn btn-primary" onClick={this.addToCart}>Add to Cart</Button>
             </div>
         )
 

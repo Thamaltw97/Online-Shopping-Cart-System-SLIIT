@@ -62,7 +62,7 @@ function HomePage() {
             <br />
             {Products.length === 0 ?
                 <div style={{ display: 'flex', height: '300px', justifyContent: 'center', alignItems: 'center' }}>
-                    <h3>No posts yet...</h3>
+                    <h3>No products yet...</h3>
                 </div>  :
                 <div>
                     <Row gutter={[16, 16]}>

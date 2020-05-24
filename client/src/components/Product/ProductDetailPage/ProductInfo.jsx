@@ -106,13 +106,21 @@ function ProductInfo(props){
 
     const btnWishList = (e) => {
         e.preventDefault();
+
+        let finPrice = 0;
+        if (booVal){
+            finPrice = PrintAmount;
+        } else {
+            finPrice = parseFloat(Product.productUnitPrice);
+        }
+
 //let x = parseFloat(Product.productUnitPrice) * parseFloat('textbox value');
         const wishListObj = {
             productName: Product.productName,
             productDesc: Product.productDesc,
             productSize: Product.productSize,
             productColour: Product.productColour,
-            productUnitPrice: Product.productUnitPrice,
+            productUnitPrice: finPrice,
             wishUserId: localStorage.getItem('user-id')
         };
 
