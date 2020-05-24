@@ -52,11 +52,11 @@ router.post("/register", async (req, res) => {
             });
 
             let mailOptions = {
-                from: '"Online Fashion Stop" <OnlineFashionStop@gmail.com>',
+                from: '"Online Fashion Gallery" <OnlineFashionGallery@gmail.com>',
                 to: `${email}`,
-                subject: 'Online Fashion Stop',
+                subject: 'Online Fashion Gallery',
                 text: 'Your Store Manager account has been created.',
-                html: `<b>Welcome to Online Fashion Stop! </b><br/><br/><br/>Your Store Manager account has been created.<br/><br/>User email: ${email}<br/>Password: ${password}`,
+                html: `<b>Welcome to Online Fashion Gallery! </b><br/><br/><br/>Your Store Manager account has been created.<br/><br/><br/>Login credentials,<br/><br/>User email: ${email}<br/>Password: ${password}`,
             };
 
             transporter.sendMail(mailOptions, function(error, info){

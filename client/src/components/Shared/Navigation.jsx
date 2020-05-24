@@ -17,7 +17,7 @@ class Navigation extends Component{
 
 
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <span className="navbar-brand mb-0 h1">Online Fashion Stop</span>
+                <span className="navbar-brand mb-0 h1">Online Fashion Gallery</span>
                 <ul className="navbar-nav my-2 my-lg-0 ml-auto">
                     <li className="nav-item">
                         <Link className="nav-link" to="/home">
