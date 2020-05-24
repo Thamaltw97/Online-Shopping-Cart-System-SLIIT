@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import Axios from "axios";
-import {Button} from "antd";
+//import {Button} from "antd";
 //import { Link } from "react-router-dom";
 
 
@@ -120,7 +120,7 @@ export default class WishList extends Component{
                         {this.itemList()}
                     </tbody>
                 </table>
-                <Button className="btn btn-primary" onClick={this.addToCart}>Add to Cart</Button>
+                <button className="btn btn-primary" onClick={this.addToCart}>Add to Cart</button>
             </div>
         )
 
