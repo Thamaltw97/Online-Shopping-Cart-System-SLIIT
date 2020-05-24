@@ -26,7 +26,7 @@ class EditCategory extends Component{
                     categoryDesc: response.data.categoryDesc,
                     categoryId: this.props.match.params.id
                 });
-                console.log(this.state)
+                //console.log(this.state)
             })
             .catch(function (err) {
                 console.log(err)
@@ -69,7 +69,7 @@ class EditCategory extends Component{
             .then(res => {
                 if (res.data) {
                     alert(res.data);
-                    console.log(res.data.success);
+                    //console.log(res.data.success);
                 } else {
                     alert('Error from server: ' + res.data.err);
                 }

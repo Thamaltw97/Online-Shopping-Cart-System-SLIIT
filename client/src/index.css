@@ -88,3 +88,16 @@ legend.custom-border {
   font-weight: bold;
   font-size: x-small;
 }
+
+.tableComment {
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.tblAdminSm {
+  background-color: #5cd65c;
+}
+
+.tblAdminCat {
+  background-color: #ff9933;
+}

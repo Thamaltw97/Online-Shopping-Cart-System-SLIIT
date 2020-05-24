@@ -25,7 +25,7 @@ class StoreManagerHome extends Component{
         Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/users/getstoremanagers')
             .then(response => {
                 this.setState({storeManagers: response.data.storemanagers});
-                console.log(this.state.storeManagers)
+                //console.log(this.state.storeManagers)
             })
             .catch(function (err) {
                 console.log(err);
@@ -78,8 +78,8 @@ class StoreManagerHome extends Component{
                         </div>
                     </div>
 
-                    <table className="table table-striped" style={{ marginTop: 20 }}>
-                        <thead>
+                    <table className="table table-striped tableComment" style={{ marginTop: 20 }}>
+                        <thead className="tblAdminSm">
                         <tr>
                             <th>Name</th>
                             <th>Email</th>

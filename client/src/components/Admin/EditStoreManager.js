@@ -91,7 +91,7 @@ class EditStoreManager extends Component{
                 }
             })
             .catch(err => {console.log('Error from client: ' + err)});
-        console.log(obj);
+        //console.log(obj);
         this.props.history.push('/admin/storeManagerHome');
     }
 

@@ -70,7 +70,7 @@ class ViewComments extends React.Component {
 
     render() {
         return(
-            <div style={{ width: '75%', margin: '3rem auto' }}>
+            <div style={{ width: '95%', margin: '3rem auto' }}>
                 <div style={{ textAlign: 'center' }}>
                     <h2>Comments Section</h2>
                 </div>
@@ -80,9 +80,9 @@ class ViewComments extends React.Component {
                     <div className="col-md-3">
                         <h3>All Comments</h3>
                     </div>
-                    <table className="table table-striped" style={{ marginTop: 20 }}>
+                    <table className="table table-striped tableComment" style={{ marginTop: 20 }}>
                         <thead>
-                        <tr>
+                        <tr className="bg-info">
                             <th>Comment</th>
                             <th>Suggestions</th>
                         </tr>
@@ -99,9 +99,9 @@ class ViewComments extends React.Component {
                     <div className="col-md-3">
                         <h3>My Comments</h3>
                     </div>
-                    <table className="table table-striped" style={{ marginTop: 20 }}>
+                    <table className="table table-striped tableComment" style={{ marginTop: 20 }}>
                         <thead>
-                        <tr>
+                        <tr className="bg-info">
                             <th>Comment</th>
                             <th>Suggestions</th>
                             <th>Action</th>

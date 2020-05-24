@@ -14,7 +14,7 @@ const Item = props => (
         <td>{props.item.quantity}</td>
         <td>{props.item.totalPrice}</td>
         <td>
-        <Link to={"/cart/edit/"+props.item._id}>Edit</Link><span> </span>
+        <Link to={"/cart/edit/"+props.item._id}>Edit</Link><span> | </span>
         <button className="btn btn-danger" button type="submit" id="btnDelete"
                 onClick={() =>
                     Axios.delete('https://onlineshoppingcartsystemsliit.herokuapp.com/api/cart/delete/' + props.item._id)
@@ -47,9 +47,6 @@ export default class Cart extends Component{
     }
 
 
-
-
-
     componentDidMount() {
         Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/cart/cartbyuser/' + localStorage.getItem('user-id'))
             .then(response => {
@@ -60,7 +57,7 @@ export default class Cart extends Component{
                 }
                 //console.log(finalAmount)
                 this.setState({totalAmount: finalAmount});
-                console.log(this.state.totalAmount)
+                //console.log(this.state.totalAmount)
             })
             .catch(function (err) {
                 console.log(err);
@@ -91,9 +88,9 @@ export default class Cart extends Component{
 
     render() {
         return (
-            <div>
+            <div style={{ width: '95%', margin: '3rem auto' }}>
                 <h2 className="header-shoppingcart">Shopping Cart</h2>
-                <table className="table table-striped" style={{marginTop:20}}>
+                <table className="table table-striped tableComment" style={{marginTop:20}}>
                     <thead>
                     <tr>
                         <th className="th-cart">Item Name</th>

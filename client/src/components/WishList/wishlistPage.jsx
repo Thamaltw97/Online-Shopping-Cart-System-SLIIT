@@ -67,11 +67,12 @@ export default class WishList extends Component{
 
     render() {
         return (
-            <div>
+            <div style={{ width: '95%', margin: '3rem auto'  }}>
+                <br />
                 <h3>WishList</h3>
-                <table className="table table-striped" style={{marginTop:20}}>
+                <table className="table table-striped tableComment" style={{marginTop:20}}>
                     <thead>
-                    <tr>
+                    <tr className="bg-warning">
                         <th>Item Name</th>
                         <th>Item Description</th>
                         <th>Item Colour</th>

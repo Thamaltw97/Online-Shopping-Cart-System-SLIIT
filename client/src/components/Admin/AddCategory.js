@@ -24,7 +24,7 @@ function AddCategoryPage(props) {
             categoryDesc: categoryDescValue,
         };
 
-        console.log(categoryObj)
+        //console.log(categoryObj)
 
         Axios.post('https://onlineshoppingcartsystemsliit.herokuapp.com/api/categories/add', categoryObj)
             .then(res => {

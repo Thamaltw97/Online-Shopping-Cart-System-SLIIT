@@ -41,7 +41,7 @@ function AddStoreManagerPage(props) {
             userRole: 'storeManager'
         };
 
-        console.log(storeManagerObj)
+        //console.log(storeManagerObj)
 
         Axios.post('https://onlineshoppingcartsystemsliit.herokuapp.com/api/users/register', storeManagerObj)
             .then(res => {

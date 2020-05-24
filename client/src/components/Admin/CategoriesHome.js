@@ -79,7 +79,7 @@ class CategoriesHome extends Component{
                     </div>
 
                     <table className="table table-striped" style={{ marginTop: 20 }}>
-                        <thead>
+                        <thead className="tblAdminCat">
                         <tr>
                             <th>Category Name</th>
                             <th>Category Description</th>

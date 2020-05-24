@@ -27,7 +27,7 @@ class EditCart extends Component{
     }
 
     componentDidMount() {
-        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/cart/'+this.props.match.params.id)
+        Axios.get('https://onlineshoppingcartsystemsliit.herokuapp.com/api/cart/' + this.props.match.params.id)
             .then(response => {
                 this.setState({
                     quantity: response.data.quantity,
@@ -35,7 +35,7 @@ class EditCart extends Component{
                     totalPrice: response.data.totalPrice,
                     productUnitPrice: response.data.totalPrice / response.data.quantity
                 });
-                console.log(this.state.quantity)
+                //console.log(this.state.quantity)
             })
             .catch(function (err) {
                 console.log(err)
@@ -45,7 +45,7 @@ class EditCart extends Component{
     onUpdate(e) {
         e.preventDefault();
         let tot = this.state.productUnitPrice * this.state.quantity;
-        console.log(tot);
+        //console.log(tot);
         const obj = {
             quantity: this.state.quantity,
             totalPrice: tot
@@ -54,12 +54,13 @@ class EditCart extends Component{
             .then(res => {
                 if (res.data){
                     alert(res.data);
+                    this.props.history.push('/cart');
                 } else {
                     alert('Error from server: '+ res.data);
                 }
             })
             .catch(err => {console.log('Error from client: ' + err)});
-        // this.props.history.push('/cart');
+
     }
 
     render() {
@@ -78,6 +79,13 @@ class EditCart extends Component{
                                        maxLength="30" disabled
                                        // onChange={this.onCategoryNameChange}
                                        value={this.state.itemId}
+                                />
+                                <br/>
+                                <label>Product Name : </label>
+                                <input id="categoryName" type="text" className="form-control text-capitalize"
+                                       maxLength="30" disabled
+                                    // onChange={this.onCategoryNameChange}
+                                       value={this.state.productName}
                                 />
                                 <br/>
                                 <label>Item Quantity : </label>
