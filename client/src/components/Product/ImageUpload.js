@@ -64,7 +64,7 @@ function ImageUpload(props) {
                 {Images.map((image, index) =>(
                     <div onClick={() => onDelete(image)} key={index}>
                         <img style={{ minWidth: '200px', width: '200px', height: '250px'}}
-                             src={`http://localhost:5000/${image}`}
+                             src={`https://onlineshoppingcartsystemsliit.herokuapp.com/${image}`}
                              alt={`productImg-${index}`} />
                     </div>
                 ))}
